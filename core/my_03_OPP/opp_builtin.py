@@ -2,12 +2,14 @@
 # -*- coding: utf-8 -*-
 
 class ThirdClass(object):
+
     def __init__(self, value):
         """
         初始化实例属性
         :param value:
         """
         self.value = value
+        self.name = None
 
     def __add__(self, other):
         """
@@ -29,9 +31,10 @@ class ThirdClass(object):
 
 if __name__ == '__main__':
     a = ThirdClass('abc')
-    b = 'xzy' + a   # 如果为定义__radd__将引发TypeError
+    b = 'xzy' + a  # 如果为定义__radd__将引发TypeError
     print(b.value)
     # 类属性字典__dict__
     print(ThirdClass.__dict__.keys())
     # 超类元组
     print(ThirdClass.__bases__)
+    print(a.getName())
