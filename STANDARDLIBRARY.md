@@ -1,6 +1,6 @@
 ## pycharm
-[setting](./doc/pycharm_setting.md)
-[error](./doc/pycharm_error.md)
++ [setting](./doc/pycharm_setting.md)  
++ [error](./doc/pycharm_error.md)
 
 ## [os](./core/my_02_os)
 

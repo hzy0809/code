@@ -2,14 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="16224516-f110-4a12-ad04-71e5f6c58c7a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/core/my_06_elasticsearch/elasticsearch_basic.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/elasticsearch.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/pycharm_setting.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EXTENTIONLIBRARY.md" beforeDir="false" afterPath="$PROJECT_DIR$/EXTENTIONLIBRARY.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/STANDARDLIBRARY.md" beforeDir="false" afterPath="$PROJECT_DIR$/STANDARDLIBRARY.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/my_03_OOP/oop_decorator.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/my_03_OOP/oop_decorator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/pycharm_setting.md" beforeDir="false" afterPath="$PROJECT_DIR$/doc/pycharm_setting.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
