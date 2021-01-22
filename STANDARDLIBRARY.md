@@ -1,3 +1,6 @@
+## pycharm
+[setting]()
+
 ## [os](./core/my_02_os)
 
 + [基本使用](./core/my_02_os/00_basic.py)

@@ -4,6 +4,12 @@
 
 ## [flask](./core/my_04_flask)
 
-## [mongoDB]()
+## [mongoDB](./core/my_05_mongoDB)
 + [文档](./doc/MongoDB权威指南（第2版）.pdf)
 + [笔记](./doc/MongoDB.md)
+
+## [Elasticsearch](./core/my_06_elasticsearch)  
+  
+参考文档
+- [getting-started-with-elasticsearch-in-python](https://towardsdatascience.com/getting-started-with-elasticsearch-in-python-c3598e718380)
+- [笔记](./doc/elasticsearch.md)

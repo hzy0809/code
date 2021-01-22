@@ -13,6 +13,7 @@ class Student(object):
         self._age = age
 
     # 添加类属性
+    # 仅使用@property时，该属性为只读属性
     @property
     def name(self):
         return self._name
@@ -25,6 +26,10 @@ class Student(object):
         if len(value) > 10:
             raise ValueError('name too long (>10)')
         self._name = value
+
+    # @name.getter
+    # def name(self):
+    #     return self._name
 
     @staticmethod
     def test_static():
