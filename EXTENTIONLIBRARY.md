@@ -7,6 +7,7 @@
 ## [mongoDB](./core/my_05_mongoDB)
 + [文档](./doc/MongoDB权威指南（第2版）.pdf)
 + [笔记](./doc/MongoDB.md)
++ [pymongo基本使用](./core/my_05_mongoDB/01_pymongo.py)
 
 ## [Elasticsearch](./core/my_06_elasticsearch)  
   
