@@ -3,6 +3,7 @@
 + [连接redis数据库](./core/my_01_redis/00_connetc_redis.py)
 
 ## [flask](./core/my_04_flask)
++ [笔记](./doc/flask.md)
 
 ## [mongoDB](./core/my_05_mongoDB)
 + [文档](./doc/MongoDB权威指南（第2版）.pdf)
