@@ -22,6 +22,7 @@ class SingleMetaClass(type):
             cls.__instance = super().__call__(*args, **kwargs)
             return cls.__instance
         else:
+            # todo 会不会覆盖掉没有修改的属性
             if args or kwargs:
                 cls.__instance.__init__(*args, **kwargs)
             return cls.__instance
