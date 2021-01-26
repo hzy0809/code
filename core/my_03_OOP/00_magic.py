@@ -61,7 +61,7 @@ if __name__ == '__main__':
     b = 'xyz' + a  # 如果为定义__radd__将引发TypeError
     print(b.value)
     c = ThirdClass()
-    print(c.value)
+    print(a is c)
     # 类属性字典__dict__
     print(ThirdClass.__dict__.keys())
     # 超类元组
