@@ -1,7 +1,33 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-class ThirdClass(object):
+class SingleMetaClass(type):
+    """
+    单例模式
+    """
+
+    def __init__(cls, *args, **kwargs):
+        cls.__instance = None
+        super().__init__(*args, **kwargs)
+
+    def __call__(cls, *args, **kwargs):
+        """
+
+        :param args:
+        :param kwargs:
+        :return:
+        """
+        print('__call__')
+        if cls.__instance is None:
+            cls.__instance = super().__call__(*args, **kwargs)
+            return cls.__instance
+        else:
+            if args or kwargs:
+                cls.__instance.__init__(*args, **kwargs)
+            return cls.__instance
+
+
+class ThirdClass(metaclass=SingleMetaClass):
 
     def __init__(self, value):
         """
@@ -10,6 +36,7 @@ class ThirdClass(object):
         """
         self.value = value
         self.name = None
+        print('__init__')
 
     def __add__(self, other):
         """
@@ -31,10 +58,11 @@ class ThirdClass(object):
 
 if __name__ == '__main__':
     a = ThirdClass('abc')
-    b = 'xzy' + a  # 如果为定义__radd__将引发TypeError
+    b = 'xyz' + a  # 如果为定义__radd__将引发TypeError
     print(b.value)
+    c = ThirdClass()
+    print(c.value)
     # 类属性字典__dict__
     print(ThirdClass.__dict__.keys())
     # 超类元组
     print(ThirdClass.__bases__)
-    print(a.getName())

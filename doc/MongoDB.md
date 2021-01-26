@@ -9,6 +9,28 @@
   > 存储灵活，读取性能高，易扩展   
   > 数据重复
 + Sql：关系型数据库
++ MongoDB MySQL Redis 区别和使用场景
+  - MySQL 是关系型数据库，支持事务
+  - MongoDB Redis 非关系型数据库，不支持事务
+    1. 希望速度快的时候，选择MongoDB或者Redis
+    2. 数据量过大的时候，选择频繁使用的数据存入Redis，其他数据存入MongoDB
+    3. MongoDB不用提前建表建数据库，使用方便，字段数量不确定的时候使用MongoDB
+    4. 后续需要用到数据之间的关系，考虑MySQL
+  
++ 爬虫数据去重
+  - 使用数据库建立关键字段（一个或多个）建立索引进行去重
+  - 根据url地址进行去重
+    1. 使用场景：url对应的数据不会改变
+    2. url存在redis中
+    3. 拿到url地址，判断url在Redis的URL的集合中是否存在
+  - 布隆过滤器
+    1. 使用多个加密算法得到多个值，
+    2. 将对应位置设置为1
+    3. 通过判断对应位置的值，来判断URL是否抓取过
+  
++ 根据数据本省进行去重
+  - 选择特定的字段，使用加密算法（md5,sha1）将字段进行加密生成字符串，存入Redis
+  - 如果后续新来的数据，加密后的字符串存在于Redis集合中，即数据存在，进行更新，否则插入数据
 
 ## 服务
 
@@ -80,11 +102,11 @@
 
 ### 集合
 
-+ db.createCollection(name, options)
-  > 手动创建集合
-  > options = {capped:True, size:10}  
-  > capped: 默认为fault表示不设置上限，true表示设置上   
-  > size: 上限大小，超出上限时，会将之前的数据删除，单位：`字节`
++ db.createCollection(name, options)  
+  手动创建集合
+  - options = {capped:True, size:10}  
+  - capped: 默认为fault表示不设置上限，true表示设置上   
+  - size: 上限大小，超出上限时，会将之前的数据删除，单位：`字节`
 
 + show collections
   > 查看集合
@@ -103,7 +125,7 @@
   > db.test1.insert({_id:1000,name:'xiao',age:20})
   WriteResult({ "nInserted" : 1 })
   # _id存在报错
-  db.test1.insert({_id:1000,name:'ming',age:30})
+  > db.test1.insert({_id:1000,name:'ming',age:30})
   WriteResult({
       "nInserted" : 0,
       "writeError" : {
@@ -111,21 +133,20 @@
           "errmsg" : "E11000 duplicate key error collection: test.test1 index: _id_ dup key: { _id: 1000.0 }"
       }
   })
-  db.test1.find()
+  > db.test1.find()
   { "_id" : 1000, "name" : "xiao", "age" : 20 }
   
   # _id存在执行更新操作
-  db.test1.save({_id:1000,name:'ming',age:30})
+  > db.test1.save({_id:1000,name:'ming',age:30})
   WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
-  db.test1.find()
+  > db.test1.find()
   { "_id" : 1000, "name" : "ming", "age" : 30 }
   ```
   
 + 更新：db.collection_name.update(`<query>`,`<update>`,`{multi:<boolean>`})
-  > 更新  
-  > query:查询条件  
-  > update：更新操作  
-  > multi：可选，默认为`fault`只更新第一条记录，`true`更新所有满足条件的文档
+  - query:查询条件  
+  - update：更新操作  
+  - multi：可选，默认为`fault`只更新第一条记录，`true`更新所有满足条件的文档
   ```shell
   > db.test1.find()
   { "_id" : 1000, "name" : "ming", "age" : 30 }
@@ -169,8 +190,8 @@
   { "_id" : ObjectId("600d5d204859990197b20c88"), "name" : "ming", "age" : 32 }
   ```
 + 删除：db.collection_name.remove(`<query>`,`<justOne:boolean>`)
-  > 删除，默认情况为删除满足条件的所有数据   
-  > justOne:只删除一条
+  - 删除，默认情况为删除满足条件的所有数据   
+  - justOne:只删除一条
   ```shell
   > db.test1.find()
   { "_id" : 1000, "name" : "ming", "age" : 18 }
@@ -190,14 +211,14 @@
   ```
 #### 查询
 + 查询db.collection_name.find(`<query>`)
-  > findOne()：查询，只返回第一个  
-  > .pretty()：将结果格式化  
-  > .limit()：限定数量  
-  > .skip()：跳过指定数量`limit和skip顺序可以交换，建议先skip`  
-  > .sort()：排序`1升序 -1降序`  
-  > .count()：数量
-  > .distinct()：消除重复
-  > 投影：控制返回字段 db.collection_name.find({},{`字段：1`})
+  - findOne()：查询，只返回第一个  
+  - .pretty()：将结果格式化  
+  - .limit()：限定数量  
+  - .skip()：跳过指定数量`limit和skip顺序可以交换，建议先skip`  
+  - .sort()：排序`1升序 -1降序`  
+  - .count()：数量
+  - .distinct()：消除重复
+  - 投影：控制返回字段 db.collection_name.find({},{`字段：1`})
   ```shell
   # 查询全部
   db.products.find({})
@@ -233,21 +254,21 @@
   ```
   
 + 条件运算符
-  1. 等于：默认
-  2. 小于：$lt
-  3. 小于等于：$lte
-  4. 大于：$gt
-  5. 大于等于：$gte
-  6. 不等于：$ne
-  7. 范围：$in
-  8. not范围：$nin
+  - 等于：默认
+  - 小于：$lt
+  - 小于等于：$lte
+  - 大于：$gt
+  - 大于等于：$gte
+  - 不等于：$ne
+  - 范围：$in
+  - not范围：$nin
   ```shell
   db.stu.find({age:{$lte:18}})
   db.stu.find({age:{$in:[18,28,38]}})
   ```
 + 逻辑运算符
-  1. and：多个条件即可
-  2. or：$or,值为数组，数组中每个元素为json
+  - and：多个条件即可
+  - or：$or,值为数组，数组中每个元素为json
   ```shell
   # and
   db.stu.find({age:18,name:'huang'})
@@ -270,10 +291,6 @@
         return this.age>30}
   })
   ```
-  
-
-
-
 
 ### 聚合（aggregate）
 
@@ -383,3 +400,222 @@ db.collection_name.aggregate({`管道`:{`表达式`}})
 + $push：在结果文档中插入值到一个数组中
 + $first：根据文档的排序获取第一个文档数据
 + $last：获取最后一个文档数据
+
+
+
+### 索引
+
+> 提升查询速度
+
++ 建立索引
+db.collection_name.ensureIndex({属性：1},{'unique':true})
+  - `1`表示升序，`-1`表示降序
+  - unique可选，表示索引值唯一
+    1. 使用数据库建立关键字的唯一索引进行去重
+  
+  ```shell
+  > for(i=0;i<100000;i++){
+      db.t255.insert({name:'test'+i,age:i})
+    }
+  WriteResult({ "nInserted" : 1 })
+  > db.t255.count()
+  100000
+  
+  # .explain('executionStats') 查询状态
+  > db.t255.find({name:'test10000'}).explain('executionStats')
+  {
+      "queryPlanner" : {
+          "plannerVersion" : 1,
+          "namespace" : "test.t255",
+          "indexFilterSet" : false,
+          "parsedQuery" : {
+              "name" : {
+                  "$eq" : "test10000"
+              }
+          },
+          "winningPlan" : {
+              "stage" : "COLLSCAN",
+              "filter" : {
+                  "name" : {
+                      "$eq" : "test10000"
+                  }
+              },
+              "direction" : "forward"
+          },
+          "rejectedPlans" : [ ]
+      },
+      "executionStats" : {
+          "executionSuccess" : true,
+          "nReturned" : 1,
+          "executionTimeMillis" : 43,  # 查询时间
+          "totalKeysExamined" : 0,
+          "totalDocsExamined" : 100000,
+          "executionStages" : {
+              "stage" : "COLLSCAN",
+              "filter" : {
+                  "name" : {
+                      "$eq" : "test10000"
+                  }
+              },
+              "nReturned" : 1,
+              "executionTimeMillisEstimate" : 2,
+              "works" : 100002,
+              "advanced" : 1,
+              "needTime" : 100000,
+              "needYield" : 0,
+              "saveState" : 100,
+              "restoreState" : 100,
+              "isEOF" : 1,
+              "direction" : "forward",
+              "docsExamined" : 100000
+          }
+      },
+      "serverInfo" : {
+          "host" : "h-job.local",
+          "port" : 27017,
+          "version" : "4.4.3",
+          "gitVersion" : "913d6b62acfbb344dde1b116f4161360acd8fd13"
+      },
+      "ok" : 1
+  }
+  
+  # 建立索引
+  > db.t255.ensureIndex({name:1})
+  {
+      "createdCollectionAutomatically" : false,
+      "numIndexesBefore" : 1,
+      "numIndexesAfter" : 2,
+      "ok" : 1
+  }
+  
+  {
+      "queryPlanner" : {
+          "plannerVersion" : 1,
+          "namespace" : "test.t255",
+          "indexFilterSet" : false,
+          "parsedQuery" : {
+              "name" : {
+                  "$eq" : "test10000"
+              }
+          },
+          "winningPlan" : {
+              "stage" : "FETCH",
+              "inputStage" : {
+                  "stage" : "IXSCAN",
+                  "keyPattern" : {
+                      "name" : 1
+                  },
+                  "indexName" : "name_1",
+                  "isMultiKey" : false,
+                  "multiKeyPaths" : {
+                      "name" : [ ]
+                  },
+                  "isUnique" : false,
+                  "isSparse" : false,
+                  "isPartial" : false,
+                  "indexVersion" : 2,
+                  "direction" : "forward",
+                  "indexBounds" : {
+                      "name" : [
+                          "[\"test10000\", \"test10000\"]"
+                      ]
+                  }
+              }
+          },
+          "rejectedPlans" : [ ]
+      },
+      "executionStats" : {
+          "executionSuccess" : true,
+          "nReturned" : 1,
+          "executionTimeMillis" : 5,  # 查询速度提高
+          "totalKeysExamined" : 1,
+          "totalDocsExamined" : 1,
+          "executionStages" : {
+              "stage" : "FETCH",
+              "nReturned" : 1,
+              "executionTimeMillisEstimate" : 0,
+              "works" : 2,
+              "advanced" : 1,
+              "needTime" : 0,
+              "needYield" : 0,
+              "saveState" : 0,
+              "restoreState" : 0,
+              "isEOF" : 1,
+              "docsExamined" : 1,
+              "alreadyHasObj" : 0,
+              "inputStage" : {
+                  "stage" : "IXSCAN",
+                  "nReturned" : 1,
+                  "executionTimeMillisEstimate" : 0,
+                  "works" : 2,
+                  "advanced" : 1,
+                  "needTime" : 0,
+                  "needYield" : 0,
+                  "saveState" : 0,
+                  "restoreState" : 0,
+                  "isEOF" : 1,
+                  "keyPattern" : {
+                      "name" : 1
+                  },
+                  "indexName" : "name_1",
+                  "isMultiKey" : false,
+                  "multiKeyPaths" : {
+                      "name" : [ ]
+                  },
+                  "isUnique" : false,
+                  "isSparse" : false,
+                  "isPartial" : false,
+                  "indexVersion" : 2,
+                  "direction" : "forward",
+                  "indexBounds" : {
+                      "name" : [
+                          "[\"test10000\", \"test10000\"]"
+                      ]
+                  },
+                  "keysExamined" : 1,
+                  "seeks" : 1,
+                  "dupsTested" : 0,
+                  "dupsDropped" : 0
+              }
+          }
+      },
+      "serverInfo" : {
+          "host" : "h-job.local",
+          "port" : 27017,
+          "version" : "4.4.3",
+          "gitVersion" : "913d6b62acfbb344dde1b116f4161360acd8fd13"
+      },
+      "ok" : 1
+  }
+  ```
+
++ db.collection_name.getIndexes()
+查看所有索引
+  
+  ```shell
+  > db.t255.getIndexes()
+  [
+      {
+          "v" : 2,
+          "key" : {
+              "_id" : 1
+          },
+          "name" : "_id_"
+      },
+      {
+          "v" : 2,
+          "key" : {
+              "name" : 1
+          },
+          "name" : "name_1"
+      }
+  ]
+  ```
+
++ db.collection_name.ensureIndex({name:1,age:1})  
+联合索引  
+> 通过联合索引确定数据的唯一性
+
++ db.collection_name.dropIndex('索引名称')
+删除索引
+  
