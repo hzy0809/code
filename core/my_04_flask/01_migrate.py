@@ -46,6 +46,7 @@ class Author(db.Model):
 class Book(db.Model):
     __tablename__ = 'tbl_books'
 
+
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64), unique=True)
     # 表中外键
@@ -63,7 +64,9 @@ def without_migrate():
     author1 = Author("admin")
     # session 会话
     db.session.add(author1)
-    db.session.commit()
+    db.commit()
+
+    # db.session.add_all([])
 
 
 if __name__ == '__main__':
