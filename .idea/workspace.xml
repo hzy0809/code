@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="16224516-f110-4a12-ad04-71e5f6c58c7a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/test/open_file.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/STANDARDLIBRARY.md" beforeDir="false" afterPath="$PROJECT_DIR$/STANDARDLIBRARY.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/my_02_os/00_basic.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/my_02_os/00_basic.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/my_04_flask/01_migrate.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/my_04_flask/01_migrate.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/flask.md" beforeDir="false" afterPath="$PROJECT_DIR$/doc/flask.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/pycharm_error.md" beforeDir="false" afterPath="$PROJECT_DIR$/doc/pycharm_error.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -188,8 +182,8 @@
         <item itemvalue="Python.hello" />
         <item itemvalue="Python.c" />
         <item itemvalue="Python.02_metaclass" />
-        <item itemvalue="Python.00_magic" />
         <item itemvalue="Python.01_pymongo" />
+        <item itemvalue="Python.00_magic" />
       </list>
     </recent_temporary>
   </component>
@@ -215,7 +209,11 @@
       <workItem from="1611999838224" duration="1078000" />
       <workItem from="1612001279679" duration="24000" />
       <workItem from="1612102869880" duration="2593000" />
-      <workItem from="1612143815622" duration="565000" />
+      <workItem from="1612143815622" duration="1604000" />
+      <workItem from="1612167530423" duration="734000" />
+      <workItem from="1612423141440" duration="2957000" />
+      <workItem from="1612489802749" duration="3063000" />
+      <workItem from="1612661942866" duration="803000" />
     </task>
     <servers />
   </component>
