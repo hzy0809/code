@@ -10,6 +10,10 @@ learning python and record with program
 
 [扩展库](./EXTENTIONLIBRARY.md)
 
+## Linux
+
+[git](./doc/git.md)
+
 
 
 

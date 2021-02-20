@@ -2,8 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="16224516-f110-4a12-ad04-71e5f6c58c7a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/my_07_function/00_built_in.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/git.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/redis.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/STANDARDLIBRARY.md" beforeDir="false" afterPath="$PROJECT_DIR$/STANDARDLIBRARY.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/MongoDB.md" beforeDir="false" afterPath="$PROJECT_DIR$/doc/MongoDB.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/flask.md" beforeDir="false" afterPath="$PROJECT_DIR$/doc/flask.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -213,7 +219,15 @@
       <workItem from="1612167530423" duration="734000" />
       <workItem from="1612423141440" duration="2957000" />
       <workItem from="1612489802749" duration="3063000" />
-      <workItem from="1612661942866" duration="803000" />
+      <workItem from="1612661942866" duration="3700000" />
+      <workItem from="1612750162535" duration="1062000" />
+      <workItem from="1612835663136" duration="2272000" />
+      <workItem from="1612923023476" duration="520000" />
+      <workItem from="1613035275801" duration="29000" />
+      <workItem from="1613043293797" duration="1362000" />
+      <workItem from="1613615474442" duration="2011000" />
+      <workItem from="1613701437777" duration="3982000" />
+      <workItem from="1613785980581" duration="3370000" />
     </task>
     <servers />
   </component>

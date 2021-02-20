@@ -619,3 +619,25 @@ db.collection_name.ensureIndex({属性：1},{'unique':true})
 + db.collection_name.dropIndex('索引名称')
 删除索引
   
+
+### 实践
+
++ count
+1. `db.collection.countDocuments(filter_condition)`
+2. ```
+   db.collection.aggregate(
+   [
+   {$match:filter_condition},
+   {$count:'number'}
+   ]
+   )
+   ```
+3. ```
+   db.colletcion.aggregate(
+   [
+   {$match:filter_condition},
+   {$group:{_id:null,count:{$sum:1}}},
+   {$project:{_id:0}}
+   ]
+   )
+   ```
