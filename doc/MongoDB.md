@@ -1,3 +1,5 @@
+[toc]
+
 # MONGODB
 
 
@@ -42,6 +44,7 @@
   > conn = new Mongo("host:port") 连接到想要的mongod
 - 关闭：在shell中
   db.adminCommand({"shutdown":1})
+  
   > 
 - 备份  
   mongodump -h dbhost -d dbname -o dbdirectory  
@@ -70,6 +73,7 @@
 - 数组(Arrays)：多个值存储到一个键
 - 内嵌文档
 - 对象id：Object ID，文档属性_id，保证文档唯一性
+  
   > 12字节16进制数
 - 二进制数据
 - 代码：JavaScript代码
@@ -92,12 +96,16 @@
 ### database
 
 + show databases
+  
   > 查看当前数据库
 + use db_name
+  
   > 使用某个数据库
 + db
+  
   > 查看当前数据库
 + db.dropDatabase()
+  
   > 删除当前数据库
 
 ### 集合
@@ -109,8 +117,10 @@
   - size: 上限大小，超出上限时，会将之前的数据删除，单位：`字节`
 
 + show collections
+  
   > 查看集合
 + db.collection_name.drop()
+  
   > 删除集合
 ### 文档
 
@@ -209,7 +219,34 @@
   > xdb.test1.find()
   >
   ```
++ 更新field($rename)
+
+  ```shell
+  {
+  	_id:1
+  	name:{
+  		firstname:a
+  		secondname:b
+  	}
+  }
+  
+  # 将name改为name1,更改单条
+  db.collection.update({_id:1},{$rename:{name:name1}})
+  
+  # 更改collection中的全部
+db.collection.updateMany({},{$rename:{name:name1}})
+  
+  # 更改多层属性
+  db.collection.updateMany({},{$rename:{'name.firstname':'name.fname'}}
+  
+  # 当更改的字段不存在于collection中时，该操作符不做任何事情
+  
+  ```
+  
+  
+
 #### 查询
+
 + 查询db.collection_name.find(`<query>`)
   - findOne()：查询，只返回第一个  
   - .pretty()：将结果格式化  
@@ -292,7 +329,9 @@
   })
   ```
 
-### 聚合（aggregate）
+### 聚合（aggregate）   
+
+
 
 > 聚合（aggregate）是基于数据处理的聚合管道，每个文档通过一个由多个阶段（stage）组成的管道，可以对每个阶段的管道进行分组、过滤等功能，然后经过一系列的处理，输出相应的结果。  
 db.collection_name.aggregate({`管道`:{`表达式`}})
@@ -313,26 +352,23 @@ db.collection_name.aggregate({`管道`:{`表达式`}})
         count:{$sum:1},
         avg_age:{$avg:'$age'}}}
   )
-  
   # 按照hometown进行分组，获取平均年龄
   db.stu.aggregate(
       {$group:{_id:'hometown',
                mean_age:{$avg:'$age'}}}
   )
-  
   # _id:null 将集合中所有文档分为一组
   db.stu.aggregate(
     {$group:{_id:null,
              count:{$sum:1},
              mean_age:{$avg:'$age'}}}
   )
-  
   db.tv3.aggregate(
   # 对多个字段进行分组,可以用来去重
-    {$group:{_id:{country:'$country',province:'$province',userid:'$userid'}}},
+    {$group:{_id:	                   {country:'$country',province:'$province',userid:'$userid'}}},
     {$group:{_id:{country:'$_id.country',province:'_id.province'},count:{$sum:1}}},
     {$project:{_id:0,country:'$_id.country',province:'_id.province',count:1}}
-  )
+      )
   ```
 + $match：过滤数据
   ```shell
@@ -390,8 +426,25 @@ db.collection_name.aggregate({`管道`:{`表达式`}})
   )
   ```
 
++ $out:将结果存储到新的collection
+
+  `会清空new collection中已有的数据，并且复制结果集的索引到新的集合中`
+
+  ```shell
+  db.collection.aggregate(
+    [
+      {$match:{}},
+      {$out:'new collection'}
+    ]
+  )
+  ```
+
+  
+
+  
 
 表达式
+
 > 表达式:'$列名'
 + $sum：计算总和，$sum:1 表示以一倍计数
 + $avg：平均值
@@ -400,6 +453,7 @@ db.collection_name.aggregate({`管道`:{`表达式`}})
 + $push：在结果文档中插入值到一个数组中
 + $first：根据文档的排序获取第一个文档数据
 + $last：获取最后一个文档数据
+
 
 
 
