@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="16224516-f110-4a12-ad04-71e5f6c58c7a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/core/my_03_OOP/03_inherit.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/STANDARDLIBRARY.md" beforeDir="false" afterPath="$PROJECT_DIR$/STANDARDLIBRARY.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/MongoDB.md" beforeDir="false" afterPath="$PROJECT_DIR$/doc/MongoDB.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/git.md" beforeDir="false" afterPath="$PROJECT_DIR$/doc/git.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,8 +14,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Jupyter Notebook" />
         <option value="Python Script" />
+        <option value="Jupyter Notebook" />
       </list>
     </option>
   </component>
@@ -60,7 +59,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="File.Encoding" />
+    <property name="settings.editor.selected.configurable" value="fileTemplates" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -233,6 +232,11 @@
       <workItem from="1614499406314" duration="389000" />
       <workItem from="1614515818654" duration="2096000" />
       <workItem from="1614736969163" duration="4192000" />
+      <workItem from="1614779080580" duration="1712000" />
+      <workItem from="1614849507665" duration="1483000" />
+      <workItem from="1614909936696" duration="519000" />
+      <workItem from="1615189030067" duration="2208000" />
+      <workItem from="1615797317992" duration="69000" />
     </task>
     <servers />
   </component>
