@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="16224516-f110-4a12-ad04-71e5f6c58c7a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/core/my_03_OOP/03_inherit.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/git.md" beforeDir="false" afterPath="$PROJECT_DIR$/doc/git.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -236,7 +234,10 @@
       <workItem from="1614849507665" duration="1483000" />
       <workItem from="1614909936696" duration="519000" />
       <workItem from="1615189030067" duration="2208000" />
-      <workItem from="1615797317992" duration="69000" />
+      <workItem from="1615797317992" duration="151000" />
+      <workItem from="1615797501199" duration="280000" />
+      <workItem from="1616988278829" duration="34000" />
+      <workItem from="1617863740107" duration="346000" />
     </task>
     <servers />
   </component>
