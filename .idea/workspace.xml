@@ -3,6 +3,28 @@
   <component name="ChangeListManager">
     <list default="true" id="16224516-f110-4a12-ad04-71e5f6c58c7a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EXTENTIONLIBRARY.md" beforeDir="false" afterPath="$PROJECT_DIR$/python/EXTENTIONLIBRARY.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/STANDARDLIBRARY.md" beforeDir="false" afterPath="$PROJECT_DIR$/python/STANDARDLIBRARY.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/my_01_redis/00_connetc_redis.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/my_01_redis/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/my_02_os/00_basic.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/my_02_os/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/my_03_OOP/00_magic.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/my_03_OOP/01_class_decorator.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/my_03_OOP/02_metaclass.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/my_03_OOP/03_inherit.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/my_03_OOP/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/my_04_flask/01_migrate.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/my_05_mongoDB/01_pymongo.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/my_06_elasticsearch/elasticsearch_basic.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/my_07_function/00_built_in.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/my_08_multi_task/00_gevent.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/MongoDB.md" beforeDir="false" afterPath="$PROJECT_DIR$/datebase/mongo/MongoDB.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/MongoDB权威指南（第2版）.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/datebase/mongo/MongoDB权威指南（第2版）.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/git.md" beforeDir="false" afterPath="$PROJECT_DIR$/linux/git.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/redis.md" beforeDir="false" afterPath="$PROJECT_DIR$/datebase/redis/redis.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,6 +85,13 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/core/my_06_elasticsearch" />
       <recent name="$PROJECT_DIR$/doc" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/python" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/datebase/mongo" />
+      <recent name="$PROJECT_DIR$/datebase/redis" />
+      <recent name="$PROJECT_DIR$/linux" />
     </key>
   </component>
   <component name="RunManager" selected="Python.00_gevent">
@@ -240,7 +269,7 @@
       <workItem from="1617863740107" duration="672000" />
       <workItem from="1617934798771" duration="631000" />
       <workItem from="1617951579709" duration="5000" />
-      <workItem from="1618976445494" duration="297000" />
+      <workItem from="1618976445494" duration="1020000" />
     </task>
     <servers />
   </component>

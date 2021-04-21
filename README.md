@@ -1,18 +1,24 @@
 [toc]
 
-
-
 ## python
 
 learning python and record with program
 
-[标准库](./STANDARDLIBRARY.md)   
+[标准库](python/STANDARDLIBRARY.md)
 
-[扩展库](./EXTENTIONLIBRARY.md)
+[扩展库](python/EXTENTIONLIBRARY.md)
 
 ## Linux
 
-[git](./doc/git.md)
+[git](linux/git.md)
+
+## datebase
+
+### mongo
+
++ [文档](./datebase/mongo/MongoDB权威指南（第2版）.pdf)
++ [笔记](./datebase/mongo/MongoDB.md)
++ [pymongo基本使用](./python/my_05_mongoDB/01_pymongo.py)
 
 
 
