@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="16224516-f110-4a12-ad04-71e5f6c58c7a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/linux/git.md" beforeDir="false" afterPath="$PROJECT_DIR$/linux/git.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -250,6 +250,7 @@
       <workItem from="1617934798771" duration="631000" />
       <workItem from="1617951579709" duration="5000" />
       <workItem from="1618976445494" duration="2655000" />
+      <workItem from="1619267160942" duration="2616000" />
     </task>
     <servers />
   </component>
@@ -269,7 +270,7 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/python_personal$00_gevent.coverage" NAME="00_gevent Coverage Results" MODIFIED="1614445932365" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/core/my_08_multi_task" />
     <SUITE FILE_PATH="coverage/python_personal$hello.coverage" NAME="hello Coverage Results" MODIFIED="1612103845212" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test/schema" />
+    <SUITE FILE_PATH="coverage/python_personal$00_gevent.coverage" NAME="00_gevent Coverage Results" MODIFIED="1614445932365" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/core/my_08_multi_task" />
   </component>
 </project>
