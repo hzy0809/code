@@ -9,6 +9,7 @@
   `在merge时，注意merge的目标是否正确`
   
 ## rebase and merge
+[博客](https://zhuanlan.zhihu.com/p/93635269)
 ### 基本原则
 + 下游分支更新上游分支内容的时候使用 `rebase`
 + 上游分支合并下游分支内容的时候使用 `merge`
@@ -23,4 +24,16 @@
 + 要经常从上游分支更新代码，如果长时间不更新上游分支代码容易出现大量冲突
 
 
-## 
+# error
+## 10054
++ 原因：上传的文件太大，缓存不够，默认只有1M
++ 解决方法：`git config http.postBuffer 524288000`
+
+## Author identity unknown
++ 解决方法   
+```
+在git命令行中重新输入命令:  
+先输入：$ git config --global user.name “你的名字”
+回车后，
+再输入：$ git config --global user.email “你的邮箱地址”
+```
