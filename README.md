@@ -18,7 +18,7 @@ learning python and record with program
 
 + [文档](./datebase/mongo/MongoDB权威指南（第2版）.pdf)
 + [笔记](./datebase/mongo/MongoDB.md)
-+ [pymongo基本使用](./python/my_05_mongoDB/01_pymongo.py)
++ [pymongo基本使用](python/mongo/01_pymongo.py)
 
 
 

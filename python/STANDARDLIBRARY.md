@@ -2,18 +2,18 @@
 + [setting](../doc/pycharm_setting.md)  
 + [error](../doc/pycharm_error.md)
 
-## [os](./my_02_os)
+## [os](usage/os)
 
-+ [基本使用](./my_02_os/00_basic.py)
++ [基本使用](usage/os/00_basic.py)
 
 ## OPP
-+ [内置方法](./my_03_OOP/00_magic.py)
-+ [类内装饰器和__slots__](./my_03_OOP/01_class_decorator.py)
-+ [metaclass](./my_03_OOP/02_metaclass.py)
++ [内置方法](usage/OOP/00_magic.py)
++ [类内装饰器和__slots__](usage/OOP/01_class_decorator.py)
++ [metaclass](usage/OOP/02_metaclass.py)
 
 ## 函数
 
-+ [内置函数](./my_07_function)
++ [内置函数](usage/function)
 > 函数调用时->关键字参数  
 > 创建函数时->默认参数
 
