@@ -5,5 +5,6 @@
 # @File    : iterator.py
 # @Software: PyCharm
 """
-
+1. 集合数据类型
+2. generator
 """
