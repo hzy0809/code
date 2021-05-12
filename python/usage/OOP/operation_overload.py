@@ -181,7 +181,6 @@ class Commuter(object):
         return self.val > other
 
 
-
 if __name__ == '__main__':
     c1 = Commuter(1)
     c2 = Commuter(2)
