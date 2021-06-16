@@ -5,6 +5,11 @@
 # @File    : bound_method.py
 # @Software: PyCharm
 
+"""
+绑定方法
+"""
+
+
 class KA(object):
     def __init__(self, data):
         self.data = data

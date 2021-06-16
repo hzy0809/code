@@ -64,7 +64,7 @@ def without_migrate():
     author1 = Author("admin")
     # session 会话
     db.session.add(author1)
-    db.commit()
+    db.session.commit()
 
     # db.session.add_all([])
 

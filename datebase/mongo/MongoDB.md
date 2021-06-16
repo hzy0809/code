@@ -177,6 +177,9 @@
   > db.test1.find()
   { "_id" : 1000, "name" : "hong", "age" : 18 }
   
+  # 删除某一字段{$unset{}}
+  db.CheXing_2096.updateMany({},{$unset:{'properties.BaoHanTaoTu_36123':1,'properties.TuPian_new_36113':1}})
+  
   > db.test1.find()
   { "_id" : 1000, "name" : "hong", "age" : 18 }
   { "_id" : ObjectId("600d5d184859990197b20c86"), "name" : "hong", "age" : 30 }
