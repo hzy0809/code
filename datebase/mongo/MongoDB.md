@@ -681,7 +681,8 @@ db.collection_name.ensureIndex({属性：1},{'unique':true})
 
 + count
 1. `db.collection.countDocuments(filter_condition)`
-2. ```
+2. count
+   ```
    db.collection.aggregate(
    [
    {$match:filter_condition},
@@ -689,7 +690,8 @@ db.collection_name.ensureIndex({属性：1},{'unique':true})
    ]
    )
    ```
-3. ```
+3. count
+   ```
    db.colletcion.aggregate(
    [
    {$match:filter_condition},
@@ -698,3 +700,75 @@ db.collection_name.ensureIndex({属性：1},{'unique':true})
    ]
    )
    ```
+4. 收集id,批量删除
+    ```shell
+    var ids=[]
+    db.CheXing_2096.find(
+       {'properties.ChanPinKuId_36095':{$exists:0},'properties.CheXingMingCheng_35936':{$exists:0}}
+    ).forEach(function(doc){
+        ids.push({
+                'deleteOne':{'filter':{'_id':doc._id}}
+            })
+        })
+    print(ids)
+    db.CheXing_2096.bulkWrite(ids)
+    db.CheXing_2096_Meta.bulkWrite(ids)
+    ```
+   
+5. 关联查询，循环删除
+    ```shell
+    db.CheXing_2096.aggregate(
+    [
+        {$lookup:{
+            "localField": "_id",
+            "from": 'CheXing_2096_Meta',
+            "foreignField": "_id",
+            "as": "Meta"
+            }},
+        {$match:{'Meta':{$size:0}}},
+        {$project:{_id:1}}
+    ]
+    ).forEach(function(doc){
+        db.CheXing_2096.deleteOne({_id:doc._id})
+        })
+    ```
+   
+6. 循环更新
+
+    ```shell
+    var op = []
+    db.TuPian_2734.aggregate(
+    [
+    {$match:{'properties.SuoShuTaoTu4_43775':{$exists:1}}},
+    {$match:{'properties.SuoShuTaoTu4_43775':{$type:4}}},
+    {$project:{_id:1,'properties.SuoShuTaoTu4_43775':1}},
+    ]
+    ).forEach(
+    function(doc){
+        op.push(
+        {
+            'updateOne':{'filter':{'_id':doc._id},'update':{'$set':{'properties.SuoShuTaoTu4_43775':doc.properties.SuoShuTaoTu4_43775[doc.properties.SuoShuTaoTu4_43775.length-1]}}}
+        }
+        )
+    }  
+    )
+    db.TuPian_2734.bulkWrite(op)
+    ```
+7. 连接查询
+
+    ```shell
+    db.TaoTu2_2175.aggregate(
+        [
+            {$lookup:{
+                from:'TuPian_2100',
+                localField:'properties.BaoHanTuPian2_36687', 
+                foreignField:'_id', # TaoTu2_2175.properties.BaoHanTuPian2_36687=TuPian_2100._id
+                as:'tupian'
+                }},
+             {$unwind:'$tupian'},
+             {$project:{_id:1,pic_id:'$tupian._id',difference:{$eq:['$tupian.properties.SuoShuTaoTu4_36362','$_id']}}},
+             {$match:{difference:true}}, # TuPian_2100.properties.SuoShuTaoTu4_36362 = TaoTu2_2175._id
+             {$limit:10000}
+        ]
+    )
+    ```
