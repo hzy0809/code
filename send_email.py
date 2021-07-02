@@ -5,27 +5,18 @@
 # @File    : send_email.py
 # @Software: PyCharm
 import pymongo
-from openpyxl import Workbook
 import logging
-import unittest
 from datetime import datetime, timedelta
-from avalon.material import Material
-from saber_sdk.op.pyscript.v2.src.core import func
-
-import requests
-from requests.auth import HTTPBasicAuth
-import poplib
 import pandas as pd
-import urllib.parse
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.application import MIMEApplication
-from email.header import Header
 import smtplib
 import pymysql
 
 receivers = [
-    'huzhenyu@aidigger.com'
+    'huzhenyu@aidigger.com',
+    'jinqi@aidigger.com',
 ]
 
 head = """
@@ -154,12 +145,12 @@ body = """
 def send(html_data, title, filename):
     # title = '{}_{}'.format(title, q_date)
     global receivers
-    mail_host = 'smtpdm.aliyun.com'
-    mail_user = 'socrates_editor@aidigger.com'
-    mail_pass = 'socrates_editor2333'
+    # mail_host = 'smtpdm.aliyun.com'
+    # mail_user = 'socrates_editor@aidigger.com'
+    # mail_pass = 'socrates_editor2333'
     mail_host = 'smtp.163.com'
     mail_user = 'tools_jq@163.com'
-    mail_pass = '@fFKqt*852YU/t6'
+    # mail_pass = '@fFKqt*852YU/t6'
     mail_pass = 'BYGASULOBASTHXYW'  # 授权密码
     try:
         me = mail_user
@@ -219,6 +210,9 @@ class Client(object):
             self._client = pymysql.connect(**self.params)
         return self._client
 
+    def __set__(self, instance, value):
+        raise AttributeError("can't set attribute")
+
 
 class MongoCollection(object):
     def __init__(self):
@@ -236,6 +230,9 @@ class MongoCollection(object):
             self.mongo = pymongo.MongoClient(self.params)
             self._collection = self.mongo.get_database(self._db_name).get_collection(self._collection_name)
         return self._collection
+
+    def __set__(self, instance, value):
+        raise AttributeError("can't set attribute")
 
     def __delete__(self, instance):
         if self.mongo is not None:
@@ -282,6 +279,7 @@ class ArticleStatistics(object):
                         user_article_model 
                     WHERE
                         folder_id IN %(ids)s
+                        AND is_deleted = 0
                     GROUP BY
                         folder_id;"""
 
@@ -295,6 +293,7 @@ class ArticleStatistics(object):
                         user_article_model 
                     WHERE
                         folder_id IN %(ids)s
+                        AND is_deleted = 0
                     GROUP BY
                         folder_id;"""
 
@@ -456,7 +455,7 @@ def retxls(df1, df1_c_list, title):
 
 
 if __name__ == '__main__':
-    with ArticleStatistics(folder_id=323, folder_name='精选问答（皆电）') as arts:
+    with ArticleStatistics(folder_id=[257, 259, 256, 326, 323, 389]) as arts:
         data = arts.get_statistics()
     d_map, d_list = statistics_data(data)
     logging.info("parse_to_df")

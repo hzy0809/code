@@ -1,40 +1,24 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# @Time    : 2021/6/24 15:26
+# @Time    : 2021/6/24 15:58
 # @Author  : hzy
-# @File    : sendemail.py
+# @File    : send_email.py
 # @Software: PyCharm
-
-from openpyxl import Workbook
+import pymongo
 import logging
-import unittest
 from datetime import datetime, timedelta
-from avalon.material import Material
-from saber_sdk.op.pyscript.v2.src.core import func
-
-import requests
-from requests.auth import HTTPBasicAuth
-import poplib
 import pandas as pd
-import urllib.parse
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.application import MIMEApplication
-from email.header import Header
 import smtplib
+import pymysql
+import xlsxwriter
 
 receivers = [
-    'jinqi@aidigger.com',
-    'wuna@aidigger.com',
-    'liyunjiao@aidigger.com',
-    'xinglu@aidigger.com',
-    'fanshaohui@aidigger.com',
-    'yinyi@aidigger.com'
+    'huzhenyu@aidigger.com',
+    # 'jinqi@aidigger.com',
 ]
-# receivers = [
-#     # 'chen.chen@aidigger.com',
-#     'jinqi@aidigger.com'
-# ]
 
 head = """
         <head>
@@ -158,35 +142,9 @@ body = """
         </body>
         """
 
-account_url = 'https://owl.aizao.com/api/v4/organization/3461/accounts?page=1&size=10000'
-data_url = "https://video-api.aizao.com/api/v1/third_accounts/{}/video_statistics?&date={}&page=1&page_size=10000"
-daily_url = "https://video-api.aizao.com/api/v1/third_accounts/{}/daily_statistics"
-bs_header = {
-    "content-type": "application/json;charset=UTF-8"
-}
-
-
-def get_yesterday():
-    d = datetime.now()
-    at = (d - timedelta(1)).strftime('%Y-%m-%d')
-    return at
-
-
-q_date = get_yesterday()
-
-
-def parse_to_html(df):
-    global head, body
-    pd.set_option('display.max_colwidth', -1)  # 设置表格数据完全显示（不出现省略号）
-    df_html = df.to_html(escape=False)  # DataFrame数据转化为HTML表格形式
-    this_body = body.format(yesterday=get_yesterday(), df_html=df_html)
-    html_data = "<html>" + head + this_body + "</html>"
-    html_data = html_data.replace('\n', '').encode("utf-8")
-    return html_data
-
 
 def send(html_data, title, filename):
-    title = '{}_{}'.format(title, q_date)
+    # title = '{}_{}'.format(title, q_date)
     global receivers
     mail_host = 'smtpdm.aliyun.com'
     mail_user = 'socrates_editor@aidigger.com'
@@ -231,169 +189,301 @@ def send(html_data, title, filename):
         return False
 
 
-def get_account():
-    res = requests.get(account_url, headers=bs_header, auth=HTTPBasicAuth("19999999999", "AI2021@lp0517"))
-    res = res.json()
-    return res
+class Client(object):
+
+    def __init__(self):
+        self._client = None
+
+    @property
+    def params(self):
+        return {
+            'host': 'rm-bp1szaw50w7xu19m1.mysql.rds.aliyuncs.com',
+            'port': 3306,
+            'user': 'bees_platform',
+            'password': 'E1RXCMQJUS02YX0',
+            'database': 'bees_platform',
+            'cursorclass': pymysql.cursors.DictCursor,
+            'charset': 'utf8mb4'
+        }
+
+    def __get__(self, instance, owner):
+        if self._client is None:
+            self._client = pymysql.connect(**self.params)
+        return self._client
 
 
-def get_video_play_url(video, account_type):
-    if not video['share_url']:
-        return '暂无'
-    if account_type == 'douyin':
-        return video['share_url']
-    elif account_type == 'kuaishou':
-        return "https://video.kuaishou.com/short-video/{}".format(video['item_id'])
-    else:
-        return '暂无'
+class MongoCollection(object):
+    def __init__(self):
+        self._collection = None
+        self._db_name = 'socrates_graph_car_prod'
+        self._collection_name = 'article_statistics'
+        self.mongo = None
+
+    @property
+    def params(self):
+        return "mongodb://socrates_graph_car:socrates_graph_car_eigen123@dds-bp17fa78084b6c342.mongodb.rds.aliyuncs.com:3717/socrates_graph_car_prod?replicaSet=mgset-16493927"
+
+    def __get__(self, instance, owner):
+        if self._collection is None:
+            self.mongo = pymongo.MongoClient(self.params)
+            self._collection = self.mongo.get_database(self._db_name).get_collection(self._collection_name)
+        return self._collection
+
+    def __delete__(self, instance):
+        if self.mongo is not None:
+            self.mongo.close()
 
 
-def video_data(account_info):
-    data_items = []
-    for item in account_info['data']:
-        idf = item['identifier']
-        if item['account_type'] not in ['kuaishou', 'douyin']:
-            print("continue")
-            continue
-        res = requests.get(data_url.format(idf, q_date), headers=bs_header)
-        res = res.json()
-        item_data = res['results']
-        for video in item_data:
-            data_items.append({
-                "账户名称": item['account_info'].get('name', item['account_info'].get('nickname', '')),
-                "时间": q_date,
-                "渠道类型": item['account_type'],
-                "视频名称": video['title'],
-                "视频链接": get_video_play_url(video, item['account_type']),
-                # "https://video.kuaishou.com/short-video/{}".format(video['item_id']) if item['account_type'] == 'kuaishou' else "暂无",
-                "播放": video['total_play'],
-                "点赞": video['total_like'],
-                "评论": video['total_comment'],
-                "转发": video['total_share'],
-                "视频发布时间": video['create_time'],
-                "更新时间": video['update_time'],
-                "原始meta": video,
-                "账户meta": item
-            })
-    d_map = {}
-    df1_c_list = ["账户名称", "时间", "渠道类型", "视频名称", "视频链接", "播放", "点赞", "评论", "转发", "视频发布时间"]
-    for k in df1_c_list:
-        d_map[k] = []
-    for item in data_items:
-        for key in df1_c_list:
-            d_map[key].append(item[key])
-    return d_map, df1_c_list
+class ArticleStatistics(object):
+    client = Client()
+    collection = MongoCollection()
 
+    def __init__(self, folder_id=None, folder_name=None):
+        """
 
-def account_data(account_info):
-    """
-    total_comment: 3
-    total_fans: 24
-    total_issue: 17
-    total_like: 67
-    total_play: 6216
-    total_share: 10
-    """
-    data_items = []
-    for item in account_info['data']:
-        idf = item['identifier']
-        if item['account_type'] not in ['kuaishou', 'douyin']:
-            print("continue")
-            continue
-        res = requests.get(daily_url.format(idf), headers=bs_header)
-        res = res.json()
-        item_data = res['results']
-        if len(item_data) == 0 or item_data[0]['date'] != q_date:
-            print(item['account_info'].get('name', item['account_info'].get('nickname', '')))
-            data_items.append({
-                "账户名称": item['account_info'].get('name', item['account_info'].get('nickname', '')),
-                "时间": "数据获取异常，请检查账户授权",
-                "渠道类型": item['account_type'],
-                "累积播放": 0,
-                "累积点赞": 0,
-                "累积评论": 0,
-                "累积转发": 0,
-                "累积粉丝": 0,
-                "累积作品": 0,
-                "新增播放": 0,
-                "新增点赞": 0,
-                "新增评论": 0,
-                "新增转发": 0,
-                "新增粉丝": 0,
-                "新增作品": 0,
-            })
+        :param folder_id: int or List[int]
+        :param folder_name: str or List[str]
+        """
+        self._folder_id = folder_id
+        self.folder_name = folder_name
+        self._folder = None
+        if self._folder_id is None and self.folder_name is None:
+            raise ValueError('folder_id和folder_name不能同时为空')
+
+    @property
+    def folder(self):
+        if self._folder is None:
+            if not isinstance(self._folder_id, list):
+                self._folder_id = [self._folder_id]
+            if not isinstance(self.folder_name, list):
+                self.folder_name = [self.folder_name]
+            self._folder = self._execute(self.folder_sql, names=self.folder_name, ids=self._folder_id)
+        return {x['id']: x for x in self._folder}
+
+    @property
+    def folder_sql(self):
+        return 'SELECT * FROM folder WHERE is_deleted = FALSE AND (`name` IN %(names)s OR id IN %(ids)s)'
+
+    @property
+    def article_week_sql(self):
+        return """SELECT DISTINCT folder_id,
+                        'last_week' AS 'period',
+                        COUNT( IF ( create_time BETWEEN %(begin_date)s AND %(end_date)s, 1, NULL ) ) AS 'create_count',
+                        COUNT( IF ( last_publish_time BETWEEN %(begin_date)s AND %(end_date)s, 1, NULL ) ) AS 'publish_count'
+                    FROM
+                        user_article_model 
+                    WHERE
+                        folder_id IN %(ids)s
+                    GROUP BY
+                        folder_id;"""
+
+    @property
+    def article_month_sql(self):
+        return """SELECT DISTINCT folder_id,
+                        CONCAT(%(year)s,'年',%(month)s,'月') AS 'period',
+                        COUNT( IF ( YEAR(create_time)=%(year)s AND MONTH(create_time)=%(month)s, 1, NULL ) ) AS 'create_count',
+                        COUNT( IF ( YEAR(last_publish_time)=%(year)s AND MONTH(last_publish_time)=%(month)s, 1, NULL ) ) AS 'publish_count' 
+                    FROM
+                        user_article_model 
+                    WHERE
+                        folder_id IN %(ids)s
+                    GROUP BY
+                        folder_id;"""
+
+    def get_last_week_period(self):
+        last_week_end = self.get_previous_by_day(6)
+        last_week_begin = self.get_previous_by_day(0, start_date=last_week_end)
+        return last_week_begin, last_week_end
+
+    def get_month_statistics(self, folder_id=None, year: int = None, month: int = None):
+        folder_ids = [folder_id] if folder_id else list(self.folder.keys())
+        year = year or datetime.today().year
+        month = month or datetime.today().month
+        return self._execute(self.article_month_sql, year=year, month=month, ids=folder_ids)
+
+    def get_last_week_statistics(self, folder_id=None):
+        folder_ids = [folder_id] if folder_id else list(self.folder.keys())
+        week_begin, last_week_end = self.get_last_week_period()
+        week_end = last_week_end + timedelta(days=1)
+        return self._execute(self.article_week_sql, begin_date=week_begin, end_date=week_end,
+                             ids=folder_ids)
+
+    def get_folder_statistics_from_mongo(self, folder_id):
+        res = self.collection.find_one({'folder_id': folder_id})
+        if not res:
+            data = {x['period']: x for x in self.get_folder_statistics_from_sql(folder_id)}
+            self.write_to_mongo(folder_id, data)
         else:
-            video = item_data[0]
-            data_items.append({
-                "账户名称": item['account_info'].get('name', item['account_info'].get('nickname', '')),
-                "时间": video['date'],
-                "渠道类型": item['account_type'],
-                "累积播放": video['total_play'],
-                "累积点赞": video['total_like'],
-                "累积评论": video['total_comment'],
-                "累积转发": video['total_share'],
-                "累积粉丝": video['total_fans'],
-                "累积作品": video['total_issue'],
-                "新增播放": video['new_play'],
-                "新增点赞": video['new_like'],
-                "新增评论": video['new_comment'],
-                "新增转发": video['new_share'],
-                "新增粉丝": video['new_fans'],
-                "新增作品": video['new_issue'],
-                "原始meta": video,
-                "账户meta": item
-            })
-    df1_c_list = ["账户名称", "时间", "渠道类型", "累积播放", "累积点赞", "累积评论", "累积转发", "累积粉丝", "累积作品", "新增播放", "新增点赞", "新增评论", "新增转发",
-                  "新增粉丝", "新增作品"]
+            data = res['data']
+            new_data = {x['period']: x for x in
+                        self.get_folder_statistics_from_sql(folder_id, begin_date=datetime.today())}
+            data.update(new_data)
+            self.write_to_mongo(folder_id, new_data)
+
+        # 组装数据
+        last_week = data.pop('last_week')
+        total_create = sum([x['create_count'] for x in data.values()])
+        total_publish = sum([x['publish_count'] for x in data.values()])
+        begin, end = self.get_last_week_period()
+        # data[f'最近一周（{begin}-{end}）'] = last_week
+        last_week['period'] = f'最近一周（{str(begin)[5:]}至{str(end)[5:]}）'
+        folder_name = last_week['folder_name']
+        result = [{
+            'folder_name': folder_name,
+            'period': '总量',
+            'create_count': total_create,
+            'publish_count': total_publish
+        }, last_week]
+        result.extend([data[x] for x in sorted(data, key=lambda x: (int(x[:4]), int(x[5:-1])), reverse=True)])
+        return result
+
+    def get_statistics(self):
+        res = []
+        for folder_id in self.folder:
+            res.extend(self.get_folder_statistics_from_mongo(folder_id))
+        return res
+
+    def get_folder_statistics_from_sql(self, folder_id, begin_date: datetime.date = None):
+        folder = self.folder[folder_id]
+        # begin_date = folder['create_time'].date()
+        begin_date = begin_date or datetime.today().replace(year=2020, month=9)
+        res = []
+        for year, month in self.get_year_month(begin_date):
+            data = self.get_month_statistics(folder_id, year=year, month=month)
+            res.extend(data)
+        res.extend(self.get_last_week_statistics(folder_id))
+        for x in res:
+            x['folder_name'] = folder['name']
+        return res
+
+    @staticmethod
+    def get_year_month(begin_date: datetime.date, end_date=None):
+        end_date = end_date or datetime.today().date()
+        year, month = begin_date.year, begin_date.month
+        end_year, end_month = end_date.year, end_date.month
+        while not (year >= end_year and month > end_month):
+            yield year, month
+            month = month + 1
+            if month == 13:
+                year += 1
+                month = 1
+
+    def write_to_mongo(self, folder_id, data: dict):
+        self.collection.update_one({'folder_id': folder_id},
+                                   {'$set': {'folder_id': folder_id, 'update_time': datetime.now(),
+                                             **{'data.' + key: value for key, value in data.items()}}},
+                                   upsert=True)
+
+    @staticmethod
+    def get_previous_by_day(index: int, start_date: datetime.date = None):
+        """
+
+        :param index: Monday 0 ~ Sunday 6
+        :param start_date:
+        :return:
+        """
+        if start_date is None:
+            start_date = datetime.today().date()
+        day_num = start_date.weekday()
+        days_ago = (7 + day_num - index) % 7
+        days_ago = 7 if days_ago == 0 else days_ago
+        return start_date - timedelta(days=days_ago)
+
+    def _execute(self, sql, **kwargs):
+        with self.client.cursor() as cursor:
+            cursor.execute(sql, kwargs)
+        return cursor.fetchall()
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        self.client.close()
+        del self.collection
+
+
+def statistics_data(info):
+    data_items = []
+    for item in info:
+        data_items.append(
+            {
+                '时间': item['period'],
+                '文件夹': item['folder_name'],
+                '已发布文章数量': item['publish_count'],
+                '生产文章数量': item['create_count']
+            }
+        )
     d_map = {}
+    df1_c_list = ['文件夹', '时间', '已发布文章数量', '生产文章数量']
     for k in df1_c_list:
         d_map[k] = []
     for item in data_items:
         for key in df1_c_list:
             d_map[key].append(item[key])
     return d_map, df1_c_list
+
+
+def get_yesterday():
+    d = datetime.now()
+    at = (d - timedelta(1)).strftime('%Y-%m-%d')
+    return at
+
+
+def parse_to_html(df):
+    global head, body
+    pd.set_option('display.max_colwidth', -1)  # 设置表格数据完全显示（不出现省略号）
+    df_html = df.to_html(escape=False)  # DataFrame数据转化为HTML表格形式
+    this_body = body.format(yesterday=get_yesterday(), df_html=df_html)
+    html_data = "<html>" + head + this_body + "</html>"
+    html_data = html_data.replace('\n', '').encode("utf-8")
+    return html_data
 
 
 def retxls(df1, df1_c_list, title):
-    filename = './{}_{}.xlsx'.format(title, get_yesterday())
+    filename = './{}_{}_1.xlsx'.format(title, get_yesterday())
     out_df = pd.DataFrame(df1, columns=df1_c_list)
-    out_df.to_excel(filename, "Sheet1", engine="openpyxl")
+    writer = pd.ExcelWriter(filename, engine="xlsxwriter")
+    out_df.to_excel(writer, sheet_name="Sheet1", index=False)
+    merge_cells(out_df, writer)
     print(filename)
     return filename
 
 
-@func.register()
-def main(material: Material, config: dict, context: dict) -> Material:
-    acc = get_account()
-    # 单视频累积
-    d_map, d_list = video_data(acc)
+def merge_cells(df, writer):
+    start_cells = [1]
+    for row in range(2, len(df) + 1):
+        if df.loc[row - 1, '文件夹'] != df.loc[row - 2, '文件夹']:
+            start_cells.append(row)
+    workbook = writer.book
+    worksheet = writer.sheets['Sheet1']
+    merge_format = workbook.add_format({'align': 'center', 'valign': 'vcenter', 'border': 2})
+
+    lastRow = len(df)
+
+    for row in start_cells:
+        try:
+            endRow = start_cells[start_cells.index(row) + 1] - 1
+            if row == endRow:
+                worksheet.write(row, 0, df.loc[row - 1, '文件夹'], merge_format)
+            else:
+                worksheet.merge_range(row, 0, endRow, 0, df.loc[row - 1, '文件夹'], merge_format)
+        except IndexError:
+            if row == lastRow:
+                worksheet.write(row, 0, df.loc[row - 1, '文件夹'], merge_format)
+            else:
+                worksheet.merge_range(row, 0, lastRow, 0, df.loc[row - 1, '文件夹'], merge_format)
+
+    writer.save()
+
+
+if __name__ == '__main__':
+    with ArticleStatistics(folder_id=[257, 259, 256, 326, 323, 389]) as arts:
+        data = arts.get_statistics()
+    d_map, d_list = statistics_data(data)
     logging.info("parse_to_df")
     df = pd.DataFrame(d_map)
     html_data = parse_to_html(df)
     logging.info("parse_to_html")
-    filename = retxls(df, d_list, '单视频数据')
-    send(html_data, '单视频数据', filename)
-
-    # 账户部分
-    d_map, d_list = account_data(acc)
-    logging.info("parse_to_df")
-    df = pd.DataFrame(d_map)
-    html_data = parse_to_html(df)
-    logging.info("parse_to_html")
-    filename = retxls(df, d_list, '分账户数据')
-    send(html_data, '分账户数据', filename)
-
-    return material
-
-
-if __name__ == "__main__":
-    import logging
-
-    logging.basicConfig(level=logging.DEBUG)
-
-    raw_dict = {}
-    config = {}
-    context = {}
-
-    logging.info("start testing...")
-    print(main(Material.from_raw_dict(raw_dict), config, context))
+    filename = retxls(df, d_list, '太平洋稿件统计')
+    df = pd.read_excel(filename)
+    # send(html_data, '太平洋稿件统计', filename)

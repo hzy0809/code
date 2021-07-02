@@ -66,7 +66,7 @@ nbformat==5.1.2
 nest-asyncio==1.5.1
 notebook==6.2.0
 numpy==1.21.0
-openpyxl==3.0.2
+openpyxl==3.0.1
 oss2==2.3.4
 packaging==20.9
 pandas==1.2.5
