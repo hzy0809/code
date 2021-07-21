@@ -204,4 +204,5 @@ fabric.properties
 migrations/
 test/
 test/schema
+*.DS_Store
 
