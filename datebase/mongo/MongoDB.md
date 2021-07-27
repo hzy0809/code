@@ -772,3 +772,40 @@ db.collection_name.ensureIndex({属性：1},{'unique':true})
         ]
     )
     ```
+   
+8. 列表插入数据
+    ```javascript
+    var op = []
+    db.GuPiaoRiHangQing_2530.aggregate(
+    [
+        {$lookup:{
+            from:'GuPiao1_2527',
+            localField:'properties.GuPiao_39608', 
+            foreignField:'_id', 
+            as:'GuPiao'
+            }},
+        {$unwind:'$GuPiao'},
+        {$project:{_id:1,'properties.RiQi_39156':1,'gupiao':'$GuPiao._id','rihangqing':'$GuPiao.properties.GuPiaoRiHangQing_39609','difference':{$in:['$_id','$GuPiao.properties.GuPiaoRiHangQing_39609']}}},
+        {$match:{'difference':false}}
+    ]
+    ).forEach(
+        function(doc){
+            op.push(
+            {
+                'updateOne':{'filter':{'_id':doc.gupiao},'update':{'$push':{'properties.GuPiaoRiHangQing_39609':doc._id}}}
+            }
+            );
+            if(op.length >= 1000){
+                db.GuPiao1_2527.bulkWrite(op);
+                print(op);
+                op = [];
+                }
+        })
+        print(op);
+        if(op.length > 0){
+            print(op);
+            db.GuPiao1_2527.bulkWrite(op);
+            }
+    ```
+   
+   
