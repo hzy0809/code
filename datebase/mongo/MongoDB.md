@@ -801,11 +801,11 @@ db.collection_name.ensureIndex({属性：1},{'unique':true})
                 op = [];
                 }
         })
-        print(op);
         if(op.length > 0){
             print(op);
             db.GuPiao1_2527.bulkWrite(op);
             }
     ```
+
    
    
