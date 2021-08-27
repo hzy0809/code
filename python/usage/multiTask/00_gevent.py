@@ -27,3 +27,4 @@ po = pool.Pool(10)
 result = po.imap(test, map(lambda x: (x, 1), range(100)))
 for i in result:
     print(i)
+

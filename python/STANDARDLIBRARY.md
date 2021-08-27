@@ -24,3 +24,6 @@
 ## 协议
 + [迭代器](./usage/protocol/iterator.py)
 + [生成器](usage/protocol/generator.py)
+
+## 内存泄漏
++ [使用gc、objgraph干掉python内存泄露与循环引用！](https://www.cnblogs.com/xybaby/p/7491656.html#_label_11)
