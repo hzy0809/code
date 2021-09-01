@@ -206,3 +206,5 @@ test/
 test/schema
 *.DS_Store
 
+/privkey.pem
+/server_cert.pem
