@@ -806,6 +806,35 @@ db.collection_name.ensureIndex({属性：1},{'unique':true})
             db.GuPiao1_2527.bulkWrite(op);
             }
     ```
-
    
-   
+9. 连接条件查询
+```javascript
+db.data_review_log.aggregate([
+{$match:{concept_id:80,task_id:3,update_time:{$gt:new Date('2021-07-16')}}},
+{$sort:{update_time:-1}},
+{$group:{_id:'$entity_id',update_time:{$first:'$update_time'},count:{$sum:1}}},
+{$lookup:{
+    from:'data_review_log',
+    let:{entity_id:'$_id',update_time:'$update_time'},
+    pipeline: [
+              { $match:
+                 { $expr:
+                    { $and:
+                       [
+                         { $eq: [ "$entity_id",  "$$entity_id" ] },
+                         { $gt: [ "$update_time", "$$update_time" ] }
+                       ]
+                    }
+                 }
+              }
+           ],
+     as: "log_data"
+    }},
+   {$project:{_id:1,log_data:1,log_size:{$size:'$log_data'}}},
+   {$match:{log_size:{$gte:1}}},
+//    {$group:{_id:null,count:{$sum:1}}}
+   {$unwind:'$log_data'},
+   {$group:{_id:'$log_data.task_id'}},
+   {$sort:{_id:-1}}
+])
+```
