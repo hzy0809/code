@@ -208,3 +208,4 @@ test/schema
 
 /privkey.pem
 /server_cert.pem
+.idea/*
