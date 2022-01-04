@@ -187,4 +187,7 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    from multiprocessing import Pool
+    p = Pool(8)
+    p.map_async()
+    from functools import partial

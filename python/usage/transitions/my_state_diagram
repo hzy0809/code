@@ -1,0 +1,10 @@
+digraph "State Machine" {
+	graph [color=black directed=true fillcolor=white label="State Machine" rankdir=LR "strict"=false style=solid]
+	node [color=black fillcolor=white peripheries=1 shape=rectangle style="rounded, filled"]
+	edge [color=black]
+	A [label=A color=red fillcolor=darksalmon peripheries=2]
+	B [label=B]
+	C [label=C]
+	B -> A [label="clear [clear_state]"]
+	C -> A [label="clear [clear_state(False, force=True)]"]
+}
