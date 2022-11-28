@@ -1,6 +1,6 @@
 ## pycharm
-+ [setting](../doc/pycharm_setting.md)  
-+ [error](../doc/pycharm_error.md)
++ [setting](../docs/notes/pycharm/pycharm_setting.md)  
++ [error](../docs/notes/pycharm/pycharm_error.md)
 
 ## [os](usage/os)
 
