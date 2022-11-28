@@ -209,3 +209,6 @@ test/schema
 /privkey.pem
 /server_cert.pem
 .idea/*
+
+.docs/work/*
+.docs/scripts/work/*
