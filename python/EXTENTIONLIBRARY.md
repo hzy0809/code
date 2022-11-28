@@ -11,4 +11,4 @@
   
 参考文档
 - [getting-started-with-elasticsearch-in-python](https://towardsdatascience.com/getting-started-with-elasticsearch-in-python-c3598e718380)
-- [笔记](../doc/elasticsearch.md)
+- [笔记](../docs/notes/elasticsearch/elasticsearch.md)
