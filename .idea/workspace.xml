@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="63f1a185-62e2-47e9-9371-462a3bcc5e63" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/python/usage/transitions/kv.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/python/usage/transitions/tree.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/pycharm_error.md" beforeDir="false" afterPath="$PROJECT_DIR$/doc/pycharm_error.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/README.MD" beforeDir="false" afterPath="$PROJECT_DIR$/python/README.MD" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager">
+    <option name="groupingKeys">
+      <option value="directory" />
+    </option>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="origin/main" />
+  </component>
+  <component name="Git.Rebase.Settings">
+    <option name="NEW_BASE" value="origin/main" />
+    <option name="OPTIONS">
+      <set>
+        <option value="REBASE_MERGES" />
+      </set>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="mac" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="MIXED" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedIndex" value="1" />
+  </component>
+  <component name="ProjectId" id="2HD8nhpocfyT6xJhq5Diwkl6Zpo" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="TODO_SCOPE" value="All Places" />
+    <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="add_unversioned_files" value="$PROJECT_DIR$/docs/work/pic/截屏2022-09-05 10.21.20.png" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/scripts" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/scripts" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/docs/notes/git" />
+      <recent name="$PROJECT_DIR$/docs/notes/linux" />
+      <recent name="$PROJECT_DIR$/docs/notes" />
+      <recent name="$PROJECT_DIR$/docs/notes/elasticsearch" />
+      <recent name="$PROJECT_DIR$/docs/notes/pycharm" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="63f1a185-62e2-47e9-9371-462a3bcc5e63" name="Default Changelist" comment="" />
+      <created>1667808462994</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1667808462994</updated>
+      <workItem from="1667808464726" duration="2669000" />
+      <workItem from="1668393817638" duration="3206000" />
+      <workItem from="1668485938548" duration="605000" />
+      <workItem from="1668487317767" duration="599000" />
+      <workItem from="1668519795906" duration="603000" />
+      <workItem from="1668563611609" duration="599000" />
+      <workItem from="1668651329467" duration="1199000" />
+      <workItem from="1668736391701" duration="474000" />
+      <workItem from="1668736920585" duration="10716000" />
+      <workItem from="1669622359992" duration="720000" />
+    </task>
+    <task id="LOCAL-00001" summary="fix .git">
+      <created>1669604703164</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1669604703164</updated>
+    </task>
+    <task id="LOCAL-00002" summary="fix .git">
+      <created>1669605717451</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1669605717451</updated>
+    </task>
+    <task id="LOCAL-00003" summary="fix .gitignore">
+      <created>1669606161608</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1669606161608</updated>
+    </task>
+    <task id="LOCAL-00004" summary="[fix] structure">
+      <created>1669612177981</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1669612177981</updated>
+    </task>
+    <task id="LOCAL-00005" summary="[fix] structure">
+      <created>1669615020973</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1669615020973</updated>
+    </task>
+    <task id="LOCAL-00006" summary="[fix] structure">
+      <created>1669615055319</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1669615055319</updated>
+    </task>
+    <task id="LOCAL-00007" summary="[fix] structure">
+      <created>1669615063279</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1669615063279</updated>
+    </task>
+    <task id="LOCAL-00008" summary="[fix] structure">
+      <created>1669615073132</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1669615073132</updated>
+    </task>
+    <task id="LOCAL-00009" summary="[fix] structure">
+      <created>1669615105630</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1669615105630</updated>
+    </task>
+    <task id="LOCAL-00010" summary="[fix] structure">
+      <created>1669615132107</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1669615132107</updated>
+    </task>
+    <task id="LOCAL-00011" summary="new">
+      <created>1669615208386</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1669615208386</updated>
+    </task>
+    <task id="LOCAL-00012" summary="[fix] merge main">
+      <created>1669621360383</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1669621360383</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="home" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="fix .git" />
+    <MESSAGE value="fix .gitignore" />
+    <MESSAGE value="[fix] structure" />
+    <MESSAGE value="new" />
+    <MESSAGE value="[fix] merge main" />
+    <option name="LAST_COMMIT_MESSAGE" value="[fix] merge main" />
+  </component>
+</project>

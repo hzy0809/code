@@ -1,0 +1,2013 @@
+Index: .gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+># Byte-compiled / optimized / DLL files\n__pycache__/\n*.py[cod]\n*$py.class\n\n# C extensions\n*.so\n\n# Distribution / packaging\n.Python\nbuild/\ndevelop-eggs/\ndist/\ndownloads/\neggs/\n.eggs/\nlib/\nlib64/\nparts/\nsdist/\nvar/\nwheels/\npip-wheel-metadata/\nshare/python-wheels/\n*.egg-info/\n.installed.cfg\n*.egg\nMANIFEST\n\n# PyInstaller\n#  Usually these files are written by a python script from a template\n#  before PyInstaller builds the exe, so as to inject date/other infos into it.\n*.manifest\n*.spec\n\n# Installer logs\npip-log.txt\npip-delete-this-directory.txt\n\n# Unit test / coverage reports\nhtmlcov/\n.tox/\n.nox/\n.coverage\n.coverage.*\n.cache\nnosetests.xml\ncoverage.xml\n*.cover\n*.py,cover\n.hypothesis/\n.pytest_cache/\n\n# Translations\n*.mo\n*.pot\n\n# Django stuff:\n*.log\nlocal_settings.py\ndb.sqlite3\ndb.sqlite3-journal\n\n# Flask stuff:\ninstance/\n.webassets-cache\n\n# Scrapy stuff:\n.scrapy\n\n# Sphinx documentation\ndocs/_build/\n\n# PyBuilder\ntarget/\n\n# Jupyter Notebook\n.ipynb_checkpoints\n\n# IPython\nprofile_default/\nipython_config.py\n\n# pyenv\n.python-version\n\n# pipenv\n#   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.\n#   However, in case of collaboration, if having platform-specific dependencies or dependencies\n#   having no cross-platform support, pipenv may install dependencies that don't work, or not\n#   install all needed dependencies.\n#Pipfile.lock\n\n# PEP 582; used by e.g. github.com/David-OConnor/pyflow\n__pypackages__/\n\n# Celery stuff\ncelerybeat-schedule\ncelerybeat.pid\n\n# SageMath parsed files\n*.sage.py\n\n# Environments\n.env\n.venv\nenv/\nvenv/\nENV/\nenv.bak/\nvenv.bak/\n\n# Spyder project settings\n.spyderproject\n.spyproject\n\n# Rope project settings\n.ropeproject\n\n# mkdocs documentation\n/site\n\n# mypy\n.mypy_cache/\n.dmypy.json\ndmypy.json\n\n# Pyre type checker\n.pyre/\n\n# Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio, WebStorm and Rider\n# Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839\n\n# User-specific stuff\n.idea/**/workspace.xml\n.idea/**/tasks.xml\n.idea/**/usage.statistics.xml\n.idea/**/dictionaries\n.idea/**/shelf\n\n# Generated files\n.idea/**/contentModel.xml\n\n# Sensitive or high-churn files\n.idea/**/dataSources/\n.idea/**/dataSources.ids\n.idea/**/dataSources.local.xml\n.idea/**/sqlDataSources.xml\n.idea/**/dynamic.xml\n.idea/**/uiDesigner.xml\n.idea/**/dbnavigator.xml\n\n# Gradle\n.idea/**/gradle.xml\n.idea/**/libraries\n\n# Gradle and Maven with auto-import\n# When using Gradle or Maven with auto-import, you should exclude module files,\n# since they will be recreated, and may cause churn.  Uncomment if using\n# auto-import.\n# .idea/artifacts\n# .idea/compiler.xml\n# .idea/jarRepositories.xml\n# .idea/modules.xml\n# .idea/*.iml\n# .idea/modules\n# *.iml\n# *.ipr\n\n# CMake\ncmake-build-*/\n\n# Mongo Explorer plugin\n.idea/**/mongoSettings.xml\n.idea/workspace.xml\n\n# File-based project format\n*.iws\n\n# IntelliJ\nout/\n\n# mpeltonen/sbt-idea plugin\n.idea_modules/\n\n# JIRA plugin\natlassian-ide-plugin.xml\n\n# Cursive Clojure plugin\n.idea/replstate.xml\n\n# Crashlytics plugin (for Android Studio and IntelliJ)\ncom_crashlytics_export_strings.xml\ncrashlytics.properties\ncrashlytics-build.properties\nfabric.properties\n\n# Editor-based Rest Client\n.idea/httpRequests\n\n# Android studio 3.1+ serialized cache file\n.idea/caches/build_file_checksums.ser\n\nmigrations/\ntest/\ntest/schema\n*.DS_Store\n\n/privkey.pem\n/server_cert.pem\n.idea/*
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.gitignore b/.gitignore
+--- a/.gitignore	(revision 3fd4ecf32c0829fe489dec59eb20c857f1871b31)
++++ b/.gitignore	(date 1669621329849)
+@@ -187,7 +187,8 @@
+ atlassian-ide-plugin.xml
+ 
+ # Cursive Clojure plugin
+-.idea/replstate.xml
++/.idea/
++*/.idea
+ 
+ # Crashlytics plugin (for Android Studio and IntelliJ)
+ com_crashlytics_export_strings.xml
+@@ -205,7 +206,12 @@
+ test/
+ test/schema
+ *.DS_Store
++*/.DS_Store
+ 
+ /privkey.pem
+ /server_cert.pem
+-.idea/*
+\ No newline at end of file
++
++/scripts/work/
++/docs/work/
++/scripts/.ipynb_checkpoints/
++/scripts/work/.idea/
+Index: linux/git.md
+===================================================================
+diff --git a/linux/git.md b/linux/git.md
+deleted file mode 100644
+--- a/linux/git.md	(revision 3fd4ecf32c0829fe489dec59eb20c857f1871b31)
++++ /dev/null	(revision 3fd4ecf32c0829fe489dec59eb20c857f1871b31)
+@@ -1,42 +0,0 @@
+-+ 记住账号密码  
+-`git config --global credential.helper store`
+-  
+-+ 清除本地的修改  
+-`git stash`
+-  
+-+ 删除远端提交的文件
+-`git rm -r --cached .idea `
+-  
+-+ 合并不同仓库的不同分支  
+-[链接](https://www.zybuluo.com/aqa510415008/note/1428756)  
+-  `在merge时，注意merge的目标是否正确`
+-  
+-## rebase and merge
+-[博客](https://zhuanlan.zhihu.com/p/93635269)
+-### 基本原则
+-+ 下游分支更新上游分支内容的时候使用 `rebase`
+-+ 上游分支合并下游分支内容的时候使用 `merge`
+-+ 更新当前分支的内容时一定要使用 `--rebase` 参数
+-### 例子
+-现有上游分支 master，基于 master 分支拉出来一个开发分支 dev，在 dev 上开发了一段时间后要把 master 分支提交的新内容更新到 dev 分支，此时切换到 dev 分支，使用 git rebase master等 dev 分支开发完成了之后，要合并到上游分支 master 上的时候，切换到 master 分支，使用 git merge dev
+-
+-### 注意事项
+-+ 更新当前分支代码的时候一定要使用 `git pull origin xxx --rebase`
+-+ 合并代码的时候按照最新分支优先合并为原则
+-+ 要经常从上游分支更新代码，如果长时间不更新上游分支代码容易出现大量冲突
+-
+-
+-# error
+-## 10054
+-+ 原因：上传的文件太大，缓存不够，默认只有1M
+-+ 解决方法：`git config http.postBuffer 524288000`
+-`git config --global http.sslVerify "false"`
+-
+-## Author identity unknown
+-+ 解决方法   
+-```
+-在git命令行中重新输入命令:  
+-先输入：$ git config --global user.name “你的名字”
+-回车后，
+-再输入：$ git config --global user.email “你的邮箱地址”
+-```
+\ No newline at end of file
+Index: send_email.py
+===================================================================
+diff --git a/send_email.py b/send_email.py
+deleted file mode 100644
+--- a/send_email.py	(revision 3fd4ecf32c0829fe489dec59eb20c857f1871b31)
++++ /dev/null	(revision 3fd4ecf32c0829fe489dec59eb20c857f1871b31)
+@@ -1,467 +0,0 @@
+-#!/usr/bin/env python3
+-# -*- coding: utf-8 -*-
+-# @Time    : 2021/6/24 15:58
+-# @Author  : hzy
+-# @File    : send_email.py
+-# @Software: PyCharm
+-import pymongo
+-import logging
+-from datetime import datetime, timedelta
+-import pandas as pd
+-from email.mime.multipart import MIMEMultipart
+-from email.mime.text import MIMEText
+-from email.mime.application import MIMEApplication
+-import smtplib
+-import pymysql
+-
+-receivers = [
+-    'huzhenyu@aidigger.com',
+-    'jinqi@aidigger.com',
+-]
+-
+-head = """
+-        <head>
+-            <meta charset="utf-8">
+-            <STYLE TYPE="text/css" MEDIA=screen>
+-
+-                table.dataframe {
+-                    border-collapse: collapse;
+-                    border: 2px solid #a19da2;
+-                    /*居中显示整个表格*/
+-                    margin: auto;
+-                }
+-
+-                table.dataframe thead {
+-                    border: 2px solid #91c6e1;
+-                    background: #f1f1f1;
+-                    padding: 10px 10px 10px 10px;
+-                    color: #333333;
+-                }
+-
+-                table.dataframe tbody {
+-                    border: 2px solid #91c6e1;
+-                    padding: 10px 10px 10px 10px;
+-                }
+-
+-                table.dataframe tr {
+-
+-                }
+-
+-                table.dataframe th {
+-                    vertical-align: top;
+-                    font-size: 14px;
+-                    padding: 10px 10px 10px 10px;
+-                    color: #105de3;
+-                    font-family: arial;
+-                    text-align: center;
+-                }
+-
+-                table.dataframe td {
+-                    text-align: center;
+-                    padding: 10px 10px 10px 10px;
+-                }
+-
+-                body {
+-                    font-family: 宋体;
+-                }
+-
+-                h1 {
+-                    color: #5db446
+-                }
+-
+-                div.header h2 {
+-                    color: #0002e3;
+-                    font-family: 黑体;
+-                }
+-
+-                div.content h2 {
+-                    text-align: center;
+-                    font-size: 28px;
+-                    text-shadow: 2px 2px 1px #de4040;
+-                    color: #fff;
+-                    font-weight: bold;
+-                    background-color: #008eb7;
+-                    line-height: 1.5;
+-                    margin: 20px 0;
+-                    box-shadow: 10px 10px 5px #888888;
+-                    border-radius: 5px;
+-                }
+-
+-                h3 {
+-                    font-size: 22px;
+-                    background-color: rgba(0, 2, 227, 0.71);
+-                    text-shadow: 2px 2px 1px #de4040;
+-                    color: rgba(239, 241, 234, 0.99);
+-                    line-height: 1.5;
+-                }
+-
+-                h4 {
+-                    color: #e10092;
+-                    font-family: 楷体;
+-                    font-size: 20px;
+-                    text-align: center;
+-                }
+-
+-                td{
+-                    /*width: 60px;*/
+-                    min-width: 60px;
+-                    max-width: 80px;
+-                    max-height: 300px;
+-                }
+-
+-            </STYLE>
+-        </head>
+-        """
+-
+-body = """
+-        <body>
+-
+-        <div align="center" class="header">
+-            <!--标题部分的信息-->
+-            <h1 align="center">截止昨天结束的数据</h1>
+-            <h2 align="center">{yesterday}</h2>
+-        </div>
+-
+-        <hr>
+-
+-        <div class="content">
+-            <!--正文内容-->
+-            <h2> </h2>
+-
+-            <div>
+-                {df_html}
+-
+-            </div>
+-            <hr>
+-
+-            <p style="text-align: center">
+-
+-            </p>
+-        </div>
+-        </body>
+-        """
+-
+-
+-def send(html_data, title, filename):
+-    # title = '{}_{}'.format(title, q_date)
+-    global receivers
+-    # mail_host = 'smtpdm.aliyun.com'
+-    # mail_user = 'socrates_editor@aidigger.com'
+-    # mail_pass = 'socrates_editor2333'
+-    mail_host = 'smtp.163.com'
+-    mail_user = 'tools_jq@163.com'
+-    # mail_pass = '@fFKqt*852YU/t6'
+-    mail_pass = 'BYGASULOBASTHXYW'  # 授权密码
+-    try:
+-        me = mail_user
+-        msg = MIMEMultipart()
+-        attach_table = MIMEApplication(open(filename, 'rb').read())
+-        # 给附件增加标题
+-        attach_table.add_header('Content-Disposition', 'attachment', filename='{}.xlsx'.format(title))
+-        #  这样的话，附件名称就可以是中文的了，不会出现乱码
+-        attach_table.set_charset('utf-8')
+-        msg.attach(attach_table)
+-
+-        msg['Subject'] = title
+-        msg['From'] = me
+-        msg['To'] = ",".join(receivers)
+-        handle = smtplib.SMTP(mail_host, 25)
+-        logging.info('smtp success')
+-        # handle = smtplib.SMTP()
+-        # handle.connect(mail_host, 465)
+-        handle.login(mail_user, mail_pass)
+-        logging.info('login success')
+-        # msg = "To: 281742852@qq.com\r\nFrom: jinqi_601@163.com\r\nSubject: 电脑已开机 \r\n\r\nsomeone open you computer...do you want shutdown\r\n"
+-
+-        context = MIMEText(html_data, _subtype='html', _charset='utf-8')  # 解决乱码
+-
+-        # msg.attach(att)
+-        msg.attach(context)
+-        # print(msg)
+-        handle.sendmail(mail_user, receivers, msg.as_string())
+-        logging.info('send 完成')
+-        handle.close()
+-
+-        return True
+-    except Exception as e:
+-        print(e)
+-        return False
+-
+-
+-class Client(object):
+-
+-    def __init__(self):
+-        self._client = None
+-
+-    @property
+-    def params(self):
+-        return {
+-            'host': 'rm-bp1szaw50w7xu19m1.mysql.rds.aliyuncs.com',
+-            'port': 3306,
+-            'user': 'bees_platform',
+-            'password': 'E1RXCMQJUS02YX0',
+-            'database': 'bees_platform',
+-            'cursorclass': pymysql.cursors.DictCursor,
+-            'charset': 'utf8mb4'
+-        }
+-
+-    def __get__(self, instance, owner):
+-        if self._client is None:
+-            self._client = pymysql.connect(**self.params)
+-        return self._client
+-
+-    def __set__(self, instance, value):
+-        raise AttributeError("can't set attribute")
+-
+-
+-class MongoCollection(object):
+-    def __init__(self):
+-        self._collection = None
+-        self._db_name = 'socrates_graph_car_prod'
+-        self._collection_name = 'article_statistics'
+-        self.mongo = None
+-
+-    @property
+-    def params(self):
+-        return "mongodb://socrates_graph_car:socrates_graph_car_eigen123@dds-bp17fa78084b6c342.mongodb.rds.aliyuncs.com:3717/socrates_graph_car_prod?replicaSet=mgset-16493927"
+-
+-    def __get__(self, instance, owner):
+-        if self._collection is None:
+-            self.mongo = pymongo.MongoClient(self.params)
+-            self._collection = self.mongo.get_database(self._db_name).get_collection(self._collection_name)
+-        return self._collection
+-
+-    def __set__(self, instance, value):
+-        raise AttributeError("can't set attribute")
+-
+-    def __delete__(self, instance):
+-        if self.mongo is not None:
+-            self.mongo.close()
+-
+-
+-class ArticleStatistics(object):
+-    client = Client()
+-    collection = MongoCollection()
+-
+-    def __init__(self, folder_id=None, folder_name=None):
+-        """
+-
+-        :param folder_id: int or List[int]
+-        :param folder_name: str or List[str]
+-        """
+-        self._folder_id = folder_id
+-        self.folder_name = folder_name
+-        self._folder = None
+-        if self._folder_id is None and self.folder_name is None:
+-            raise ValueError('folder_id和folder_name不能同时为空')
+-
+-    @property
+-    def folder(self):
+-        if self._folder is None:
+-            if not isinstance(self._folder_id, list):
+-                self._folder_id = [self._folder_id]
+-            if not isinstance(self.folder_name, list):
+-                self.folder_name = [self.folder_name]
+-            self._folder = self._execute(self.folder_sql, names=self.folder_name, ids=self._folder_id)
+-        return {x['id']: x for x in self._folder}
+-
+-    @property
+-    def folder_sql(self):
+-        return 'SELECT * FROM folder WHERE is_deleted = FALSE AND (`name` IN %(names)s OR id IN %(ids)s)'
+-
+-    @property
+-    def article_week_sql(self):
+-        return """SELECT DISTINCT folder_id,
+-                        'last_week' AS 'period',
+-                        COUNT( IF ( create_time BETWEEN %(begin_date)s AND %(end_date)s, 1, NULL ) ) AS 'create_count',
+-                        COUNT( IF ( last_publish_time BETWEEN %(begin_date)s AND %(end_date)s, 1, NULL ) ) AS 'publish_count'
+-                    FROM
+-                        user_article_model 
+-                    WHERE
+-                        folder_id IN %(ids)s
+-                        AND is_deleted = 0
+-                    GROUP BY
+-                        folder_id;"""
+-
+-    @property
+-    def article_month_sql(self):
+-        return """SELECT DISTINCT folder_id,
+-                        CONCAT(%(year)s,'年',%(month)s,'月') AS 'period',
+-                        COUNT( IF ( YEAR(create_time)=%(year)s AND MONTH(create_time)=%(month)s, 1, NULL ) ) AS 'create_count',
+-                        COUNT( IF ( YEAR(last_publish_time)=%(year)s AND MONTH(last_publish_time)=%(month)s, 1, NULL ) ) AS 'publish_count' 
+-                    FROM
+-                        user_article_model 
+-                    WHERE
+-                        folder_id IN %(ids)s
+-                        AND is_deleted = 0
+-                    GROUP BY
+-                        folder_id;"""
+-
+-    def get_last_week_period(self):
+-        last_week_end = self.get_previous_by_day(6)
+-        last_week_begin = self.get_previous_by_day(0, start_date=last_week_end)
+-        return last_week_begin, last_week_end
+-
+-    def get_month_statistics(self, folder_id=None, year: int = None, month: int = None):
+-        folder_ids = [folder_id] if folder_id else list(self.folder.keys())
+-        year = year or datetime.today().year
+-        month = month or datetime.today().month
+-        return self._execute(self.article_month_sql, year=year, month=month, ids=folder_ids)
+-
+-    def get_last_week_statistics(self, folder_id=None):
+-        folder_ids = [folder_id] if folder_id else list(self.folder.keys())
+-        week_begin, last_week_end = self.get_last_week_period()
+-        week_end = last_week_end + timedelta(days=1)
+-        return self._execute(self.article_week_sql, begin_date=week_begin, end_date=week_end,
+-                             ids=folder_ids)
+-
+-    def get_folder_statistics_from_mongo(self, folder_id):
+-        res = self.collection.find_one({'folder_id': folder_id})
+-        if not res:
+-            data = {x['period']: x for x in self.get_folder_statistics_from_sql(folder_id)}
+-            self.write_to_mongo(folder_id, data)
+-        else:
+-            data = res['data']
+-            new_data = {x['period']: x for x in
+-                        self.get_folder_statistics_from_sql(folder_id, begin_date=datetime.today())}
+-            data.update(new_data)
+-            self.write_to_mongo(folder_id, new_data)
+-
+-        # 组装数据
+-        last_week = data.pop('last_week')
+-        total_create = sum([x['create_count'] for x in data.values()])
+-        total_publish = sum([x['publish_count'] for x in data.values()])
+-        begin, end = self.get_last_week_period()
+-        # data[f'最近一周（{begin}-{end}）'] = last_week
+-        last_week['period'] = f'最近一周（{str(begin)[5:]}至{str(end)[5:]}）'
+-        folder_name = last_week['folder_name']
+-        result = [{
+-            'folder_name': folder_name,
+-            'period': '总量',
+-            'create_count': total_create,
+-            'publish_count': total_publish
+-        }, last_week]
+-        result.extend([data[x] for x in sorted(data, key=lambda x: (int(x[:4]), int(x[5:-1])), reverse=True)])
+-        return result
+-
+-    def get_statistics(self):
+-        res = []
+-        for folder_id in self.folder:
+-            res.extend(self.get_folder_statistics_from_mongo(folder_id))
+-        return res
+-
+-    def get_folder_statistics_from_sql(self, folder_id, begin_date: datetime.date = None):
+-        folder = self.folder[folder_id]
+-        # begin_date = folder['create_time'].date()
+-        begin_date = begin_date or datetime.today().replace(year=2020, month=9)
+-        res = []
+-        for year, month in self.get_year_month(begin_date):
+-            data = self.get_month_statistics(folder_id, year=year, month=month)
+-            res.extend(data)
+-        res.extend(self.get_last_week_statistics(folder_id))
+-        for x in res:
+-            x['folder_name'] = folder['name']
+-        return res
+-
+-    @staticmethod
+-    def get_year_month(begin_date: datetime.date, end_date=None):
+-        end_date = end_date or datetime.today().date()
+-        year, month = begin_date.year, begin_date.month
+-        end_year, end_month = end_date.year, end_date.month
+-        while not (year >= end_year and month > end_month):
+-            yield year, month
+-            month = month + 1
+-            if month == 13:
+-                year += 1
+-                month = 1
+-
+-    def write_to_mongo(self, folder_id, data: dict):
+-        self.collection.update_one({'folder_id': folder_id},
+-                                   {'$set': {'folder_id': folder_id, 'update_time': datetime.now(),
+-                                             **{'data.' + key: value for key, value in data.items()}}},
+-                                   upsert=True)
+-
+-    @staticmethod
+-    def get_previous_by_day(index: int, start_date: datetime.date = None):
+-        """
+-
+-        :param index: Monday 0 ~ Sunday 6
+-        :param start_date:
+-        :return:
+-        """
+-        if start_date is None:
+-            start_date = datetime.today().date()
+-        day_num = start_date.weekday()
+-        days_ago = (7 + day_num - index) % 7
+-        days_ago = 7 if days_ago == 0 else days_ago
+-        return start_date - timedelta(days=days_ago)
+-
+-    def _execute(self, sql, **kwargs):
+-        with self.client.cursor() as cursor:
+-            cursor.execute(sql, kwargs)
+-        return cursor.fetchall()
+-
+-    def __enter__(self):
+-        return self
+-
+-    def __exit__(self, exc_type, exc_val, exc_tb):
+-        self.client.close()
+-        del self.collection
+-
+-
+-def statistics_data(info):
+-    data_items = []
+-    for item in info:
+-        data_items.append(
+-            {
+-                '时间': item['period'],
+-                '文件夹': item['folder_name'],
+-                '已发布文章数量': item['publish_count'],
+-                '生产文章数量': item['create_count']
+-            }
+-        )
+-    d_map = {}
+-    df1_c_list = ['时间', '文件夹', '已发布文章数量', '生产文章数量']
+-    for k in df1_c_list:
+-        d_map[k] = []
+-    for item in data_items:
+-        for key in df1_c_list:
+-            d_map[key].append(item[key])
+-    return d_map, df1_c_list
+-
+-
+-def get_yesterday():
+-    d = datetime.now()
+-    at = (d - timedelta(1)).strftime('%Y-%m-%d')
+-    return at
+-
+-
+-def parse_to_html(df):
+-    global head, body
+-    pd.set_option('display.max_colwidth', -1)  # 设置表格数据完全显示（不出现省略号）
+-    df_html = df.to_html(escape=False)  # DataFrame数据转化为HTML表格形式
+-    this_body = body.format(yesterday=get_yesterday(), df_html=df_html)
+-    html_data = "<html>" + head + this_body + "</html>"
+-    html_data = html_data.replace('\n', '').encode("utf-8")
+-    return html_data
+-
+-
+-def retxls(df1, df1_c_list, title):
+-    filename = './{}_{}.xlsx'.format(title, get_yesterday())
+-    out_df = pd.DataFrame(df1, columns=df1_c_list)
+-    out_df.to_excel(filename, "Sheet1", engine="openpyxl")
+-    print(filename)
+-    return filename
+-
+-
+-if __name__ == '__main__':
+-    with ArticleStatistics(folder_id=[257, 259, 256, 326, 323, 389]) as arts:
+-        data = arts.get_statistics()
+-    d_map, d_list = statistics_data(data)
+-    logging.info("parse_to_df")
+-    pd.set_option('display.max_colwidth', -1)
+-    df = pd.DataFrame(d_map)
+-    html_data = parse_to_html(df)
+-    logging.info("parse_to_html")
+-    filename = retxls(df, d_list, '太平洋稿件统计')
+-    send(html_data, '太平洋稿件统计', filename)
+Index: datebase/sql/sql.md
+===================================================================
+diff --git a/datebase/sql/sql.md b/datebase/sql/sql.md
+deleted file mode 100644
+--- a/datebase/sql/sql.md	(revision 3fd4ecf32c0829fe489dec59eb20c857f1871b31)
++++ /dev/null	(revision 3fd4ecf32c0829fe489dec59eb20c857f1871b31)
+@@ -1,59 +0,0 @@
+-## 函数
+-
+-### 排序
+-
+-```sql
+-USE
+-AdventureWorks2012;
+-GO
+-SELECT p.FirstName
+-	 , p.LastName
+-	 , ROW_NUMBER() OVER (ORDER BY a.PostalCode) AS "Row Number"  
+-    ,RANK() OVER (ORDER BY a.PostalCode) AS Rank  
+-    ,DENSE_RANK() OVER (ORDER BY a.PostalCode) AS "Dense Rank"  
+-    ,NTILE(4) OVER (ORDER BY a.PostalCode) AS Quartile  
+-    ,s.SalesYTD
+-	 , a.PostalCode
+-FROM Sales.SalesPerson AS s
+-	     INNER JOIN Person.Person AS p ON s.BusinessEntityID = p.BusinessEntityID
+-	     INNER JOIN Person.Address AS a ON a.AddressID = p.BusinessEntityID
+-WHERE TerritoryID IS NOT NULL
+-  AND SalesYTD <> 0;  
+-```
+-
+-#### 连续排序无跳跃DENSE_RANK
+-  ```sql
+-  DENSE_RANK ( ) OVER ( [ <partition_by_clause> ] < order_by_clause > )  
+-  ```
+-#### 连续排序跳跃RANK
+-  ```sql
+-  RANK ( ) OVER ( [ partition_by_clause ] order_by_clause )  
+-  ```
+-#### 连续排序不重复ROW_NUMBER
+-  ```sql
+-  ROW_NUMBER ( ) OVER ( [ PARTITION BY value_expression , ... [ n ] ] order_by_clause )  
+-  ```
+-#### 排序分层NTILE
+-  ```sql
+-  NTILE (integer_expression) OVER ( [ <partition_by_clause> ] < order_by_clause > ) 
+-  ```
+-  PARTITION BY：划分组的依据   
+-  ORDER BY：排序依据
+-  
+-### 类型转换
+-
+-[DOC](https://docs.microsoft.com/en-us/sql/t-sql/functions/cast-and-convert-transact-sql?view=sql-server-ver15)
+-#### CONVERT
+-```sql
+-CONVERT ( data_type [ ( length ) ] , expression [ , style ] ) 
+-```
+-#### CAST
+-```sql
+-CAST ( expression AS data_type [ ( length ) ] ) 
+-```
+-
+-### 精度转换
+-#### ROUND
+-```sql
+-ROUND ( numeric_expression , length [ ,function ] ) 
+-```
+Index: linux/linux.md
+===================================================================
+diff --git a/linux/linux.md b/linux/linux.md
+deleted file mode 100644
+--- a/linux/linux.md	(revision 3fd4ecf32c0829fe489dec59eb20c857f1871b31)
++++ /dev/null	(revision 3fd4ecf32c0829fe489dec59eb20c857f1871b31)
+@@ -1,8 +0,0 @@
+-### 命令
+-#### xargs
+-xargs命令是给其他命令传递参数的一个过滤器，也是组合多个命令的一个工具。
+-```shell
+-redis-cli -n "db" -h 'host' -p 'port' -a 'password' keys '*' 
+-| xargs redis-cli -n "db" -h 'host' -p 'port' -a 'password' del
+-```
+-- 将前一阶段的结果作为参数传入`xargs`后的命令中
+\ No newline at end of file
+Index: datebase/mongo/MongoDB.md
+===================================================================
+diff --git a/datebase/mongo/MongoDB.md b/datebase/mongo/MongoDB.md
+deleted file mode 100644
+--- a/datebase/mongo/MongoDB.md	(revision 3fd4ecf32c0829fe489dec59eb20c857f1871b31)
++++ /dev/null	(revision 3fd4ecf32c0829fe489dec59eb20c857f1871b31)
+@@ -1,840 +0,0 @@
+-[toc]
+-
+-# MONGODB
+-
+-
+-> 注意：$是显示问题，请忽略反斜杠(pycharm中)
+-
+-## NOSQL and SQL
+-
+-+ NoSql：非关系型数据库，不仅仅是关系型数据库
+-  > 存储灵活，读取性能高，易扩展   
+-  > 数据重复
+-+ Sql：关系型数据库
+-+ MongoDB MySQL Redis 区别和使用场景
+-  - MySQL 是关系型数据库，支持事务
+-  - MongoDB Redis 非关系型数据库，不支持事务
+-    1. 希望速度快的时候，选择MongoDB或者Redis
+-    2. 数据量过大的时候，选择频繁使用的数据存入Redis，其他数据存入MongoDB
+-    3. MongoDB不用提前建表建数据库，使用方便，字段数量不确定的时候使用MongoDB
+-    4. 后续需要用到数据之间的关系，考虑MySQL
+-  
+-+ 爬虫数据去重
+-  - 使用数据库建立关键字段（一个或多个）建立索引进行去重
+-  - 根据url地址进行去重
+-    1. 使用场景：url对应的数据不会改变
+-    2. url存在redis中
+-    3. 拿到url地址，判断url在Redis的URL的集合中是否存在
+-  - 布隆过滤器
+-    1. 使用多个加密算法得到多个值，
+-    2. 将对应位置设置为1
+-    3. 通过判断对应位置的值，来判断URL是否抓取过
+-  
+-+ 根据数据本省进行去重
+-  - 选择特定的字段，使用加密算法（md5,sha1）将字段进行加密生成字符串，存入Redis
+-  - 如果后续新来的数据，加密后的字符串存在于Redis集合中，即数据存在，进行更新，否则插入数据
+-
+-## 服务
+-
+-- 启动：mongod --config /usr/local/etc/mongod.conf --fork
+-- mongodb shell: mongo host:port/db
+-  > shell是一个功能文完备的JavaScript解释器   
+-  > 参数 mongo --nodb 不连接到任何数据库
+-  > --norc 禁止加载.mongorc.js
+-  > conn = new Mongo("host:port") 连接到想要的mongod
+-- 关闭：在shell中
+-  db.adminCommand({"shutdown":1})
+-  
+-  > 
+-- 备份  
+-  mongodump -h dbhost -d dbname -o dbdirectory  
+-  > -h：服务器地址，也可以指定端口号  
+-  > -d：需要备份的数据库名称  
+-  > -o：备份数据存放的位置  
+-  ```shell
+-  mongodump -h localhost:27017 -d test1 -o ~/Desktop/test.bak
+-  ```
+-  
+-- 恢复  
+-  mongorestore -d test1 --dir test
+-  > -d：目标数据库地址  
+-  > --dir：备份文件
+-## 数据类型
+-
+-- null：空值或者不存在
+-- 布尔(Boolean)：ture false
+-- 数字(Integer): 默认使用64位浮点型数值
+-  > 整型可以使用NumberInt类（表示4字节带符号整数）  
+-  > NumberLong(表示8字节带符号整数)
+-- 字符串(string)：UTF-8
+-- 日期：毫秒数 new Date(), 对应datetime.datetime
+-- timestamp：时间戳
+-- 正则表达式：{"x":/foobar/i}
+-- 数组(Arrays)：多个值存储到一个键
+-- 内嵌文档
+-- 对象id：Object ID，文档属性_id，保证文档唯一性
+-  
+-  > 12字节16进制数
+-- 二进制数据
+-- 代码：JavaScript代码
+-
+-## 定制shell
+-
+-### shell初始化脚本
+-
+-> 在用户主目录下创建 .mongorc.js文件
+-
+-### prompt变量
+-
+->
+->
+-
+-## 命令
+-
+-> `db`表示当前数据库
+-
+-### database
+-
+-+ show databases
+-  
+-  > 查看当前数据库
+-+ use db_name
+-  
+-  > 使用某个数据库
+-+ db
+-  
+-  > 查看当前数据库
+-+ db.dropDatabase()
+-  
+-  > 删除当前数据库
+-
+-### 集合
+-
+-+ db.createCollection(name, options)  
+-  手动创建集合
+-  - options = {capped:True, size:10}  
+-  - capped: 默认为fault表示不设置上限，true表示设置上   
+-  - size: 上限大小，超出上限时，会将之前的数据删除，单位：`字节`
+-
+-+ show collections
+-  
+-  > 查看集合
+-+ db.collection_name.drop()
+-  
+-  > 删除集合
+-### 文档
+-
+-#### 增删改
+-
+-+ 插入：db.collection_name.insert(data)   
+-  ```shell
+-  db.test1000.insert({name:'xiaohong',age:20})
+-  ```
+-+ 保存：db.collection_name.save(data)
+-  ```shell
+-  > db.test1.insert({_id:1000,name:'xiao',age:20})
+-  WriteResult({ "nInserted" : 1 })
+-  # _id存在报错
+-  > db.test1.insert({_id:1000,name:'ming',age:30})
+-  WriteResult({
+-      "nInserted" : 0,
+-      "writeError" : {
+-          "code" : 11000,
+-          "errmsg" : "E11000 duplicate key error collection: test.test1 index: _id_ dup key: { _id: 1000.0 }"
+-      }
+-  })
+-  > db.test1.find()
+-  { "_id" : 1000, "name" : "xiao", "age" : 20 }
+-  
+-  # _id存在执行更新操作
+-  > db.test1.save({_id:1000,name:'ming',age:30})
+-  WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+-  > db.test1.find()
+-  { "_id" : 1000, "name" : "ming", "age" : 30 }
+-  ```
+-  
+-+ 更新：db.collection_name.update(`<query>`,`<update>`,`{multi:<boolean>`})
+-  - query:查询条件  
+-  - update：更新操作  
+-  - multi：可选，默认为`fault`只更新第一条记录，`true`更新所有满足条件的文档
+-  ```shell
+-  > db.test1.find()
+-  { "_id" : 1000, "name" : "ming", "age" : 30 }
+-  
+-  # 替换
+-  > db.test1.update({name:'ming'},{name:'hong'})
+-  WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+-  > db.test1.find()
+-  { "_id" : 1000, "name" : "hong" }
+-  > db.test1.update({name:'hong'},{name:'ming',age:18})
+-  WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+-  > db.test1.find()
+-  { "_id" : 1000, "name" : "ming", "age" : 18 }
+-  
+-  # 更新单一字段{$set{}}
+-  > db.test1.update({name:'ming'},{$set:{name:'hong'}})
+-  WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+-  > db.test1.find()
+-  { "_id" : 1000, "name" : "hong", "age" : 18 }
+-  
+-  # 删除某一字段{$unset{}}
+-  db.CheXing_2096.updateMany({},{$unset:{'properties.BaoHanTaoTu_36123':1,'properties.TuPian_new_36113':1}})
+-  
+-  > db.test1.find()
+-  { "_id" : 1000, "name" : "hong", "age" : 18 }
+-  { "_id" : ObjectId("600d5d184859990197b20c86"), "name" : "hong", "age" : 30 }
+-  { "_id" : ObjectId("600d5d1e4859990197b20c87"), "name" : "hong", "age" : 31 }
+-  { "_id" : ObjectId("600d5d204859990197b20c88"), "name" : "hong", "age" : 32 }
+-  > db.test1.update({name:'hong'},{$set:{name:'ming'}})
+-  WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+-  > db.test1.find()
+-  { "_id" : 1000, "name" : "ming", "age" : 18 }
+-  { "_id" : ObjectId("600d5d184859990197b20c86"), "name" : "hong", "age" : 30 }
+-  { "_id" : ObjectId("600d5d1e4859990197b20c87"), "name" : "hong", "age" : 31 }
+-  { "_id" : ObjectId("600d5d204859990197b20c88"), "name" : "hong", "age" : 32 }
+-  
+-  # {multi:true}更新所有满足条件的文档
+-  > db.test1.update({name:'hong'},{$set:{name:'ming'}},{multi:true})
+-  WriteResult({ "nMatched" : 3, "nUpserted" : 0, "nModified" : 3 })
+-  > db.test1.find()
+-  { "_id" : 1000, "name" : "ming", "age" : 18 }
+-  { "_id" : ObjectId("600d5d184859990197b20c86"), "name" : "ming", "age" : 30 }
+-  { "_id" : ObjectId("600d5d1e4859990197b20c87"), "name" : "ming", "age" : 31 }
+-  { "_id" : ObjectId("600d5d204859990197b20c88"), "name" : "ming", "age" : 32 }
+-  ```
+-+ 删除：db.collection_name.remove(`<query>`,`<justOne:boolean>`)
+-  - 删除，默认情况为删除满足条件的所有数据   
+-  - justOne:只删除一条
+-  ```shell
+-  > db.test1.find()
+-  { "_id" : 1000, "name" : "ming", "age" : 18 }
+-  { "_id" : ObjectId("600d5d184859990197b20c86"), "name" : "ming", "age" : 30 }
+-  { "_id" : ObjectId("600d5d1e4859990197b20c87"), "name" : "ming", "age" : 31 }
+-  { "_id" : ObjectId("600d5d204859990197b20c88"), "name" : "ming", "age" : 32 }
+-  > db.test1.remove({name:'ming'},{justOne:true})
+-  WriteResult({ "nRemoved" : 1 })
+-  > db.test1.find()
+-  { "_id" : ObjectId("600d5d184859990197b20c86"), "name" : "ming", "age" : 30 }
+-  { "_id" : ObjectId("600d5d1e4859990197b20c87"), "name" : "ming", "age" : 31 }
+-  { "_id" : ObjectId("600d5d204859990197b20c88"), "name" : "ming", "age" : 32 }
+-  > db.test1.remove({name:'ming'})
+-  WriteResult({ "nRemoved" : 3 })
+-  > xdb.test1.find()
+-  >
+-  ```
+-+ 更新field($rename)
+-
+-  ```shell
+-  {
+-  	_id:1
+-  	name:{
+-  		firstname:a
+-  		secondname:b
+-  	}
+-  }
+-  
+-  # 将name改为name1,更改单条
+-  db.collection.update({_id:1},{$rename:{name:name1}})
+-  
+-  # 更改collection中的全部
+-db.collection.updateMany({},{$rename:{name:name1}})
+-  
+-  # 更改多层属性
+-  db.collection.updateMany({},{$rename:{'name.firstname':'name.fname'}}
+-  
+-  # 当更改的字段不存在于collection中时，该操作符不做任何事情
+-  
+-  ```
+-  
+-  
+-
+-#### 查询
+-
+-+ 查询db.collection_name.find(`<query>`)
+-  - findOne()：查询，只返回第一个  
+-  - .pretty()：将结果格式化  
+-  - .limit()：限定数量  
+-  - .skip()：跳过指定数量`limit和skip顺序可以交换，建议先skip`  
+-  - .sort()：排序`1升序 -1降序`  
+-  - .count()：数量
+-  - .distinct()：消除重复
+-  - 投影：控制返回字段 db.collection_name.find({},{`字段：1`})
+-  ```shell
+-  # 查询全部
+-  db.products.find({})
+-  
+-  # 查询一条
+-  db.products.findOne()
+-  
+-  # 格式化输出
+-  db.products.find().pretty()
+-  
+-  # 分页
+-  db.products.find().limit(4)
+-  db.products.find().skip(2).limit(3)
+-  
+-  # 排序
+-  db.products.find().sort({age:1})
+-  db.products.find().sort({age:-1})
+-  db.products.find().sort({age:-1,gender:-1})
+-  
+-  统计
+-  db.stu.count()
+-  db.stu.count({age:{$gt:18}})
+-  db.stu.find({name:'a'}).count()
+-  
+-  # 消除重复
+-  # {age:{$gt:18}}筛选条件
+-  db.stu.distinct('hometown',{age:{$gt:18}})
+-  
+-  # 投影
+-  # {_id:0,name:1} 
+-  # 显示字段设置为1，不显示字段不写，_id不显示需要设置为0
+-  db.stu.find({age:{$gt:18}},{_id:0,name:1})
+-  ```
+-  
+-+ 条件运算符
+-  - 等于：默认
+-  - 小于：$lt
+-  - 小于等于：$lte
+-  - 大于：$gt
+-  - 大于等于：$gte
+-  - 不等于：$ne
+-  - 范围：$in
+-  - not范围：$nin
+-  ```shell
+-  db.stu.find({age:{$lte:18}})
+-  db.stu.find({age:{$in:[18,28,38]}})
+-  ```
+-+ 逻辑运算符
+-  - and：多个条件即可
+-  - or：$or,值为数组，数组中每个元素为json
+-  ```shell
+-  # and
+-  db.stu.find({age:18,name:'huang'})
+-  
+-  # or 
+-  db.stu.find({$or:[{age:{$gte:16}},{name:{$in:['huang','ming']}}]})
+-  ```
+-  
+-+ 正则表达式
+-  > 使用//或$regex编写
+-  ```shell
+-  db.products.find({sku:/^abc/})
+-  db.products.find({sku:{$regex:'789$'}})
+-  ```
+-+ 自定义查询
+-  > $where
+-  ```shell
+-  db.stu.find({
+-      $where:function(){
+-        return this.age>30}
+-  })
+-  ```
+-
+-### 聚合（aggregate）   
+-
+-
+-
+-> 聚合（aggregate）是基于数据处理的聚合管道，每个文档通过一个由多个阶段（stage）组成的管道，可以对每个阶段的管道进行分组、过滤等功能，然后经过一系列的处理，输出相应的结果。  
+-db.collection_name.aggregate({`管道`:{`表达式`}})
+-> 
+-管道
+-+ $group：分组，用于统计结果  
+-  - _id表示分组的依据，使用某个字段的格式为'$字段'
+-  - `$group`对应的字典中有几个键，结果中就有几个键
+-  - 分组依据需要放在`_id`后面
+-  - 去不同的字段的值需要使用`$`
+-  - 去字典嵌套的字典中的值得时候`$_id.country`
+-  - 能够同时按多个键进行分组`{$group:{_id:{country:'$country',province:'$province',userid:'$userid'}}}`
+-  ```shell
+-  # 按照gender进行分组，获取不同组数据的个数和平均年龄
+-  db.stu.aggregate(
+-      {$group:{
+-        _id:'$gender',
+-        count:{$sum:1},
+-        avg_age:{$avg:'$age'}}}
+-  )
+-  # 按照hometown进行分组，获取平均年龄
+-  db.stu.aggregate(
+-      {$group:{_id:'hometown',
+-               mean_age:{$avg:'$age'}}}
+-  )
+-  # _id:null 将集合中所有文档分为一组
+-  db.stu.aggregate(
+-    {$group:{_id:null,
+-             count:{$sum:1},
+-             mean_age:{$avg:'$age'}}}
+-  )
+-  db.tv3.aggregate(
+-  # 对多个字段进行分组,可以用来去重
+-    {$group:{_id:	                   {country:'$country',province:'$province',userid:'$userid'}}},
+-    {$group:{_id:{country:'$_id.country',province:'_id.province'},count:{$sum:1}}},
+-    {$project:{_id:0,country:'$_id.country',province:'_id.province',count:1}}
+-      )
+-  ```
+-+ $match：过滤数据
+-  ```shell
+-  # 选择年龄大于20的学生，统计男性和女性的数量
+-  db.stu.aggregate(
+-      {$match:{age:{$gt:20}},
+-       $group:{_id:'$gender',count:{$sum:1}},
+-       $project:{_id:0,gender:'$_id',count:1}}
+-  )
+-  ```
+-+ $project：修改输入文档的结构，如重命名、增加、删除字段、创建计算结果
+-  ```shell
+-  db.stu.aggregate(
+-    {$group:{
+-      _id:'$gender',
+-      count:{$sum:1},
+-      avg_age:{$avg:'$age'}}},
+-    {$project:{
+-      _id:0   # 不显示_id
+-      gender:'$_id',
+-      count:1,
+-      avg_age:1}}
+-  )
+-  ```
+-+ $sort：排序
+-  ```shell
+-  db.stu.aggregate({$sort:{age:1}})
+-  db.stu.aggregate(
+-      {$group:{_id:'$gender',count:{$sum:1}}},
+-      {$sort:{count:-1}}
+-  )
+-  ```
+-+ $limit：限制文档数量
+-+ $skip：跳过指定的文档数量
+-  ```shell
+-  db.stu.aggregate(
+-    {$group:{_id:'$gender',counter:{$sum:1}}},
+-    {$sort:{counter:1}},
+-    {$skip:1},
+-    {$limit:1}
+-  )
+-  ```
+-+ $unwind：将数组类型的字段进行拆分
+-  ```shell
+-  > db.t2.insert({_id:1,item:'t-shirt',size:['S','M','L']})
+-  WriteResult({ "nInserted" : 1 })
+-  > db.t2.aggregate({$unwind:'$size'})
+-  { "_id" : 1, "item" : "t-shirt", "size" : "S" }
+-  { "_id" : 1, "item" : "t-shirt", "size" : "M" }
+-  { "_id" : 1, "item" : "t-shirt", "size" : "L" }
+-  
+-  # preserveNullAndEmptyArrays 防止空白数据丢失
+-  > db.inventory.aggregate(
+-      {$unwind:{path:'$size',preserveNullAndEmptyArrays:true}}
+-  )
+-  ```
+-
+-+ $out:将结果存储到新的collection
+-
+-  `会清空new collection中已有的数据，并且复制结果集的索引到新的集合中`
+-
+-  ```shell
+-  db.collection.aggregate(
+-    [
+-      {$match:{}},
+-      {$out:'new collection'}
+-    ]
+-  )
+-  ```
+-
+-  
+-
+-  
+-
+-表达式
+-
+-> 表达式:'$列名'
+-+ $sum：计算总和，$sum:1 表示以一倍计数
+-+ $avg：平均值
+-+ $min：最小值
+-+ $max：最大值
+-+ $push：在结果文档中插入值到一个数组中
+-+ $first：根据文档的排序获取第一个文档数据
+-+ $last：获取最后一个文档数据
+-
+-
+-
+-
+-### 索引
+-
+-> 提升查询速度
+-
+-+ 建立索引
+-db.collection_name.ensureIndex({属性：1},{'unique':true})
+-  - `1`表示升序，`-1`表示降序
+-  - unique可选，表示索引值唯一
+-    1. 使用数据库建立关键字的唯一索引进行去重
+-  
+-  ```shell
+-  > for(i=0;i<100000;i++){
+-      db.t255.insert({name:'test'+i,age:i})
+-    }
+-  WriteResult({ "nInserted" : 1 })
+-  > db.t255.count()
+-  100000
+-  
+-  # .explain('executionStats') 查询状态
+-  > db.t255.find({name:'test10000'}).explain('executionStats')
+-  {
+-      "queryPlanner" : {
+-          "plannerVersion" : 1,
+-          "namespace" : "test.t255",
+-          "indexFilterSet" : false,
+-          "parsedQuery" : {
+-              "name" : {
+-                  "$eq" : "test10000"
+-              }
+-          },
+-          "winningPlan" : {
+-              "stage" : "COLLSCAN",
+-              "filter" : {
+-                  "name" : {
+-                      "$eq" : "test10000"
+-                  }
+-              },
+-              "direction" : "forward"
+-          },
+-          "rejectedPlans" : [ ]
+-      },
+-      "executionStats" : {
+-          "executionSuccess" : true,
+-          "nReturned" : 1,
+-          "executionTimeMillis" : 43,  # 查询时间
+-          "totalKeysExamined" : 0,
+-          "totalDocsExamined" : 100000,
+-          "executionStages" : {
+-              "stage" : "COLLSCAN",
+-              "filter" : {
+-                  "name" : {
+-                      "$eq" : "test10000"
+-                  }
+-              },
+-              "nReturned" : 1,
+-              "executionTimeMillisEstimate" : 2,
+-              "works" : 100002,
+-              "advanced" : 1,
+-              "needTime" : 100000,
+-              "needYield" : 0,
+-              "saveState" : 100,
+-              "restoreState" : 100,
+-              "isEOF" : 1,
+-              "direction" : "forward",
+-              "docsExamined" : 100000
+-          }
+-      },
+-      "serverInfo" : {
+-          "host" : "h-job.local",
+-          "port" : 27017,
+-          "version" : "4.4.3",
+-          "gitVersion" : "913d6b62acfbb344dde1b116f4161360acd8fd13"
+-      },
+-      "ok" : 1
+-  }
+-  
+-  # 建立索引
+-  > db.t255.ensureIndex({name:1})
+-  {
+-      "createdCollectionAutomatically" : false,
+-      "numIndexesBefore" : 1,
+-      "numIndexesAfter" : 2,
+-      "ok" : 1
+-  }
+-  
+-  {
+-      "queryPlanner" : {
+-          "plannerVersion" : 1,
+-          "namespace" : "test.t255",
+-          "indexFilterSet" : false,
+-          "parsedQuery" : {
+-              "name" : {
+-                  "$eq" : "test10000"
+-              }
+-          },
+-          "winningPlan" : {
+-              "stage" : "FETCH",
+-              "inputStage" : {
+-                  "stage" : "IXSCAN",
+-                  "keyPattern" : {
+-                      "name" : 1
+-                  },
+-                  "indexName" : "name_1",
+-                  "isMultiKey" : false,
+-                  "multiKeyPaths" : {
+-                      "name" : [ ]
+-                  },
+-                  "isUnique" : false,
+-                  "isSparse" : false,
+-                  "isPartial" : false,
+-                  "indexVersion" : 2,
+-                  "direction" : "forward",
+-                  "indexBounds" : {
+-                      "name" : [
+-                          "[\"test10000\", \"test10000\"]"
+-                      ]
+-                  }
+-              }
+-          },
+-          "rejectedPlans" : [ ]
+-      },
+-      "executionStats" : {
+-          "executionSuccess" : true,
+-          "nReturned" : 1,
+-          "executionTimeMillis" : 5,  # 查询速度提高
+-          "totalKeysExamined" : 1,
+-          "totalDocsExamined" : 1,
+-          "executionStages" : {
+-              "stage" : "FETCH",
+-              "nReturned" : 1,
+-              "executionTimeMillisEstimate" : 0,
+-              "works" : 2,
+-              "advanced" : 1,
+-              "needTime" : 0,
+-              "needYield" : 0,
+-              "saveState" : 0,
+-              "restoreState" : 0,
+-              "isEOF" : 1,
+-              "docsExamined" : 1,
+-              "alreadyHasObj" : 0,
+-              "inputStage" : {
+-                  "stage" : "IXSCAN",
+-                  "nReturned" : 1,
+-                  "executionTimeMillisEstimate" : 0,
+-                  "works" : 2,
+-                  "advanced" : 1,
+-                  "needTime" : 0,
+-                  "needYield" : 0,
+-                  "saveState" : 0,
+-                  "restoreState" : 0,
+-                  "isEOF" : 1,
+-                  "keyPattern" : {
+-                      "name" : 1
+-                  },
+-                  "indexName" : "name_1",
+-                  "isMultiKey" : false,
+-                  "multiKeyPaths" : {
+-                      "name" : [ ]
+-                  },
+-                  "isUnique" : false,
+-                  "isSparse" : false,
+-                  "isPartial" : false,
+-                  "indexVersion" : 2,
+-                  "direction" : "forward",
+-                  "indexBounds" : {
+-                      "name" : [
+-                          "[\"test10000\", \"test10000\"]"
+-                      ]
+-                  },
+-                  "keysExamined" : 1,
+-                  "seeks" : 1,
+-                  "dupsTested" : 0,
+-                  "dupsDropped" : 0
+-              }
+-          }
+-      },
+-      "serverInfo" : {
+-          "host" : "h-job.local",
+-          "port" : 27017,
+-          "version" : "4.4.3",
+-          "gitVersion" : "913d6b62acfbb344dde1b116f4161360acd8fd13"
+-      },
+-      "ok" : 1
+-  }
+-  ```
+-
+-+ db.collection_name.getIndexes()
+-查看所有索引
+-  
+-  ```shell
+-  > db.t255.getIndexes()
+-  [
+-      {
+-          "v" : 2,
+-          "key" : {
+-              "_id" : 1
+-          },
+-          "name" : "_id_"
+-      },
+-      {
+-          "v" : 2,
+-          "key" : {
+-              "name" : 1
+-          },
+-          "name" : "name_1"
+-      }
+-  ]
+-  ```
+-
+-+ db.collection_name.ensureIndex({name:1,age:1})  
+-联合索引  
+-> 通过联合索引确定数据的唯一性
+-
+-+ db.collection_name.dropIndex('索引名称')
+-删除索引
+-  
+-
+-### 实践
+-
+-+ count
+-1. `db.collection.countDocuments(filter_condition)`
+-2. count
+-   ```
+-   db.collection.aggregate(
+-   [
+-   {$match:filter_condition},
+-   {$count:'number'}
+-   ]
+-   )
+-   ```
+-3. count
+-   ```
+-   db.colletcion.aggregate(
+-   [
+-   {$match:filter_condition},
+-   {$group:{_id:null,count:{$sum:1}}},
+-   {$project:{_id:0}}
+-   ]
+-   )
+-   ```
+-4. 收集id,批量删除
+-    ```shell
+-    var ids=[]
+-    db.CheXing_2096.find(
+-       {'properties.ChanPinKuId_36095':{$exists:0},'properties.CheXingMingCheng_35936':{$exists:0}}
+-    ).forEach(function(doc){
+-        ids.push({
+-                'deleteOne':{'filter':{'_id':doc._id}}
+-            })
+-        })
+-    print(ids)
+-    db.CheXing_2096.bulkWrite(ids)
+-    db.CheXing_2096_Meta.bulkWrite(ids)
+-    ```
+-   
+-5. 关联查询，循环删除
+-    ```shell
+-    db.CheXing_2096.aggregate(
+-    [
+-        {$lookup:{
+-            "localField": "_id",
+-            "from": 'CheXing_2096_Meta',
+-            "foreignField": "_id",
+-            "as": "Meta"
+-            }},
+-        {$match:{'Meta':{$size:0}}},
+-        {$project:{_id:1}}
+-    ]
+-    ).forEach(function(doc){
+-        db.CheXing_2096.deleteOne({_id:doc._id})
+-        })
+-    ```
+-   
+-6. 循环更新
+-
+-    ```shell
+-    var op = []
+-    db.TuPian_2734.aggregate(
+-    [
+-    {$match:{'properties.SuoShuTaoTu4_43775':{$exists:1}}},
+-    {$match:{'properties.SuoShuTaoTu4_43775':{$type:4}}},
+-    {$project:{_id:1,'properties.SuoShuTaoTu4_43775':1}},
+-    ]
+-    ).forEach(
+-    function(doc){
+-        op.push(
+-        {
+-            'updateOne':{'filter':{'_id':doc._id},'update':{'$set':{'properties.SuoShuTaoTu4_43775':doc.properties.SuoShuTaoTu4_43775[doc.properties.SuoShuTaoTu4_43775.length-1]}}}
+-        }
+-        )
+-    }  
+-    )
+-    db.TuPian_2734.bulkWrite(op)
+-    ```
+-7. 连接查询
+-
+-    ```shell
+-    db.TaoTu2_2175.aggregate(
+-        [
+-            {$lookup:{
+-                from:'TuPian_2100',
+-                localField:'properties.BaoHanTuPian2_36687', 
+-                foreignField:'_id', # TaoTu2_2175.properties.BaoHanTuPian2_36687=TuPian_2100._id
+-                as:'tupian'
+-                }},
+-             {$unwind:'$tupian'},
+-             {$project:{_id:1,pic_id:'$tupian._id',difference:{$eq:['$tupian.properties.SuoShuTaoTu4_36362','$_id']}}},
+-             {$match:{difference:true}}, # TuPian_2100.properties.SuoShuTaoTu4_36362 = TaoTu2_2175._id
+-             {$limit:10000}
+-        ]
+-    )
+-    ```
+-   
+-8. 列表插入数据
+-    ```javascript
+-    var op = []
+-    db.GuPiaoRiHangQing_2530.aggregate(
+-    [
+-        {$lookup:{
+-            from:'GuPiao1_2527',
+-            localField:'properties.GuPiao_39608', 
+-            foreignField:'_id', 
+-            as:'GuPiao'
+-            }},
+-        {$unwind:'$GuPiao'},
+-        {$project:{_id:1,'properties.RiQi_39156':1,'gupiao':'$GuPiao._id','rihangqing':'$GuPiao.properties.GuPiaoRiHangQing_39609','difference':{$in:['$_id','$GuPiao.properties.GuPiaoRiHangQing_39609']}}},
+-        {$match:{'difference':false}}
+-    ]
+-    ).forEach(
+-        function(doc){
+-            op.push(
+-            {
+-                'updateOne':{'filter':{'_id':doc.gupiao},'update':{'$push':{'properties.GuPiaoRiHangQing_39609':doc._id}}}
+-            }
+-            );
+-            if(op.length >= 1000){
+-                db.GuPiao1_2527.bulkWrite(op);
+-                print(op);
+-                op = [];
+-                }
+-        })
+-        if(op.length > 0){
+-            print(op);
+-            db.GuPiao1_2527.bulkWrite(op);
+-            }
+-    ```
+-   
+-9. 连接条件查询
+-```javascript
+-db.data_review_log.aggregate([
+-{$match:{concept_id:80,task_id:3,update_time:{$gt:new Date('2021-07-16')}}},
+-{$sort:{update_time:-1}},
+-{$group:{_id:'$entity_id',update_time:{$first:'$update_time'},count:{$sum:1}}},
+-{$lookup:{
+-    from:'data_review_log',
+-    let:{entity_id:'$_id',update_time:'$update_time'},
+-    pipeline: [
+-              { $match:
+-                 { $expr:
+-                    { $and:
+-                       [
+-                         { $eq: [ "$entity_id",  "$$entity_id" ] },
+-                         { $gt: [ "$update_time", "$$update_time" ] }
+-                       ]
+-                    }
+-                 }
+-              }
+-           ],
+-     as: "log_data"
+-    }},
+-   {$project:{_id:1,log_data:1,log_size:{$size:'$log_data'}}},
+-   {$match:{log_size:{$gte:1}}},
+-//    {$group:{_id:null,count:{$sum:1}}}
+-   {$unwind:'$log_data'},
+-   {$group:{_id:'$log_data.task_id'}},
+-   {$sort:{_id:-1}}
+-])
+-```
+\ No newline at end of file
+Index: doc/pycharm_setting.md
+===================================================================
+diff --git a/doc/pycharm_setting.md b/doc/pycharm_setting.md
+deleted file mode 100644
+--- a/doc/pycharm_setting.md	(revision 3fd4ecf32c0829fe489dec59eb20c857f1871b31)
++++ /dev/null	(revision 3fd4ecf32c0829fe489dec59eb20c857f1871b31)
+@@ -1,6 +0,0 @@
+-使用iterm2后pycharm中的terminal没有显示venv
+-- solution
+-> FILEPATH: /Users/username/.oh-my-zsh/custom/themes/powerlevel9k/powerlevel9k.zsh-theme   
+-> defined POWERLEVEL9K_LEFT_PROMPT_ELEMENTS || POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(`virtualenv` `acaconda` context dir vcs)  
+-> 在该属性中添加virtualenv
+----
+\ No newline at end of file
+Index: datebase/neo4j/neo4j.ipynb
+===================================================================
+diff --git a/datebase/neo4j/neo4j.ipynb b/datebase/neo4j/neo4j.ipynb
+deleted file mode 100644
+--- a/datebase/neo4j/neo4j.ipynb	(revision 3fd4ecf32c0829fe489dec59eb20c857f1871b31)
++++ /dev/null	(revision 3fd4ecf32c0829fe489dec59eb20c857f1871b31)
+@@ -1,158 +0,0 @@
+-{
+- "cells": [
+-  {
+-   "cell_type": "code",
+-   "execution_count": 11,
+-   "id": "d724d34e-d65b-4255-90f1-aded23652d22",
+-   "metadata": {},
+-   "outputs": [
+-    {
+-     "name": "stdout",
+-     "output_type": "stream",
+-     "text": [
+-      "Looking in indexes: https://pypi-outer.aidigger.com/simple\n",
+-      "Collecting neo4j-driver==1.7.2\n",
+-      "  Downloading https://pypi.doubanio.com/packages/77/ac/b8b9dbe47062457ec9fa3f57b62198243869b33144218d40a03c7c25c170/neo4j-driver-1.7.2.tar.gz (24 kB)\n",
+-      "Requirement already satisfied: neobolt<2,>=1.7.4 in /Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages (from neo4j-driver==1.7.2) (1.7.17)\n",
+-      "Requirement already satisfied: neotime<2,>=1.7.1 in /Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages (from neo4j-driver==1.7.2) (1.7.4)\n",
+-      "Requirement already satisfied: six in /Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages (from neotime<2,>=1.7.1->neo4j-driver==1.7.2) (1.16.0)\n",
+-      "Requirement already satisfied: pytz in /Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages (from neotime<2,>=1.7.1->neo4j-driver==1.7.2) (2021.1)\n",
+-      "Building wheels for collected packages: neo4j-driver\n",
+-      "  Building wheel for neo4j-driver (setup.py) ... \u001b[?25ldone\n",
+-      "\u001b[?25h  Created wheel for neo4j-driver: filename=neo4j_driver-1.7.2-py3-none-any.whl size=32433 sha256=4df25c9233287b2a5d20b5214ce106f80ee5f45065c5e1230f335c9be0367007\n",
+-      "  Stored in directory: /Users/huzhenyu/Library/Caches/pip/wheels/9e/e0/73/0c18bd35770776a0130ba0903da36ac49a6f3e98a6e83ee6ba\n",
+-      "Successfully built neo4j-driver\n",
+-      "Installing collected packages: neo4j-driver\n",
+-      "  Attempting uninstall: neo4j-driver\n",
+-      "    Found existing installation: neo4j-driver 1.7.6\n",
+-      "    Uninstalling neo4j-driver-1.7.6:\n",
+-      "      Successfully uninstalled neo4j-driver-1.7.6\n",
+-      "Successfully installed neo4j-driver-1.7.2\n",
+-      "\u001b[33mWARNING: You are using pip version 21.2.1; however, version 21.2.4 is available.\n",
+-      "You should consider upgrading via the '/Library/Frameworks/Python.framework/Versions/3.8/bin/python3.8 -m pip install --upgrade pip' command.\u001b[0m\n",
+-      "Note: you may need to restart the kernel to use updated packages.\n"
+-     ]
+-    }
+-   ],
+-   "source": [
+-    "%pip install neo4j-driver"
+-   ]
+-  },
+-  {
+-   "cell_type": "code",
+-   "execution_count": 31,
+-   "id": "d10f65f8-56e7-4c80-b34a-9622a12b7a3f",
+-   "metadata": {},
+-   "outputs": [],
+-   "source": [
+-    "uri = 'neo4j://10.10.14.120:7687'\n",
+-    "auth = ('neo4j','eigen')"
+-   ]
+-  },
+-  {
+-   "cell_type": "code",
+-   "execution_count": 34,
+-   "id": "2946e1b2-065c-4642-ac51-d997af41e3cf",
+-   "metadata": {},
+-   "outputs": [],
+-   "source": [
+-    "from neo4j import GraphDatabase,basic_auth\n",
+-    "driver = GraphDatabase.driver(uri, auth=basic_auth('neo4j','eigen'))\n"
+-   ]
+-  },
+-  {
+-   "cell_type": "code",
+-   "execution_count": 36,
+-   "id": "a95374eb-7d47-4936-8107-6eec6506e9b7",
+-   "metadata": {},
+-   "outputs": [
+-    {
+-     "ename": "BoltHandshakeError",
+-     "evalue": "The Neo4J server does not support communication with this driver. This driver have support for Bolt Protocols dict_keys([Version(3, 0), Version(4, 0), Version(4, 1), Version(4, 2), Version(4, 3)])",
+-     "output_type": "error",
+-     "traceback": [
+-      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+-      "\u001b[0;31mBoltHandshakeError\u001b[0m                        Traceback (most recent call last)",
+-      "\u001b[0;32m/var/folders/g6/h24w2cnn0bzbzz1dc4v4fplm0000gn/T/ipykernel_37660/4056629200.py\u001b[0m in \u001b[0;36m<module>\u001b[0;34m\u001b[0m\n\u001b[1;32m      1\u001b[0m \u001b[0;32mwith\u001b[0m \u001b[0mdriver\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0msession\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m \u001b[0;32mas\u001b[0m \u001b[0msession\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m----> 2\u001b[0;31m     \u001b[0;32mwith\u001b[0m \u001b[0msession\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mbegin_transaction\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m \u001b[0;32mas\u001b[0m \u001b[0mtx\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m      3\u001b[0m \u001b[0;31m#         for record in tx.run(\"\"\"match (n:车系) -[r] -> (p)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      4\u001b[0m \u001b[0;31m# where  n.id = '5990339cadbf0ad5daef664c478c2f16'\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      5\u001b[0m \u001b[0;31m# with n,type(r) as _r, collect(p.id) as ids\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+-      "\u001b[0;32m/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/neo4j/work/simple.py\u001b[0m in \u001b[0;36mbegin_transaction\u001b[0;34m(self, metadata, timeout)\u001b[0m\n",
+-      "\u001b[0;32m/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/neo4j/work/simple.py\u001b[0m in \u001b[0;36m_open_transaction\u001b[0;34m(self, access_mode, database, metadata, timeout)\u001b[0m\n",
+-      "\u001b[0;32m/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/neo4j/work/simple.py\u001b[0m in \u001b[0;36m_connect\u001b[0;34m(self, access_mode, database)\u001b[0m\n",
+-      "\u001b[0;32m/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/neo4j/io/__init__.py\u001b[0m in \u001b[0;36macquire\u001b[0;34m(self, access_mode, timeout, database, bookmarks)\u001b[0m\n",
+-      "\u001b[0;32m/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/neo4j/io/__init__.py\u001b[0m in \u001b[0;36m_select_address\u001b[0;34m(self, access_mode, database, bookmarks)\u001b[0m\n",
+-      "\u001b[0;32m/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/neo4j/io/__init__.py\u001b[0m in \u001b[0;36mensure_routing_table_is_fresh\u001b[0;34m(self, access_mode, database, bookmarks)\u001b[0m\n",
+-      "\u001b[0;32m/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/neo4j/io/__init__.py\u001b[0m in \u001b[0;36mupdate_routing_table\u001b[0;34m(self, database, bookmarks)\u001b[0m\n",
+-      "\u001b[0;32m/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/neo4j/io/__init__.py\u001b[0m in \u001b[0;36mupdate_routing_table_from\u001b[0;34m(self, database, bookmarks, *routers)\u001b[0m\n",
+-      "\u001b[0;32m/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/neo4j/io/__init__.py\u001b[0m in \u001b[0;36mfetch_routing_table\u001b[0;34m(self, address, timeout, database, bookmarks)\u001b[0m\n",
+-      "\u001b[0;32m/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/neo4j/io/__init__.py\u001b[0m in \u001b[0;36mfetch_routing_info\u001b[0;34m(self, address, database, bookmarks, timeout)\u001b[0m\n",
+-      "\u001b[0;32m/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/neo4j/io/__init__.py\u001b[0m in \u001b[0;36m_acquire\u001b[0;34m(self, address, timeout)\u001b[0m\n",
+-      "\u001b[0;32m/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/neo4j/io/__init__.py\u001b[0m in \u001b[0;36mopener\u001b[0;34m(addr, timeout)\u001b[0m\n",
+-      "\u001b[0;32m/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/neo4j/io/__init__.py\u001b[0m in \u001b[0;36mopen\u001b[0;34m(cls, address, auth, timeout, routing_context, **pool_config)\u001b[0m\n",
+-      "\u001b[0;31mBoltHandshakeError\u001b[0m: The Neo4J server does not support communication with this driver. This driver have support for Bolt Protocols dict_keys([Version(3, 0), Version(4, 0), Version(4, 1), Version(4, 2), Version(4, 3)])"
+-     ]
+-    }
+-   ],
+-   "source": [
+-    "with driver.session() as session:\n",
+-    "    with session.begin_transaction() as tx:\n",
+-    "#         for record in tx.run(\"\"\"match (n:车系) -[r] -> (p)\n",
+-    "# where  n.id = '5990339cadbf0ad5daef664c478c2f16'\n",
+-    "# with n,type(r) as _r, collect(p.id) as ids\n",
+-    "# return n {.*, r:collect(_r), ids:collect(ids)}\"\"\"):\n",
+-    "#             print(record)\n",
+-    "        for record in tx.run(\"\"\"match (n:车系) -[r] -> (p)\n",
+-    "        where  n.id = '5990339cadbf0ad5daef664c478c2f16' return n,type(r),p\"\"\"):\n",
+-    "            print(record)\n",
+-    "        "
+-   ]
+-  },
+-  {
+-   "cell_type": "code",
+-   "execution_count": 27,
+-   "id": "656678a8-0aa2-443a-bc58-0ec795c473e8",
+-   "metadata": {},
+-   "outputs": [
+-    {
+-     "name": "stdout",
+-     "output_type": "stream",
+-     "text": [
+-      "neo4j eigen\n"
+-     ]
+-    }
+-   ],
+-   "source": [
+-    "print(*auth)"
+-   ]
+-  },
+-  {
+-   "cell_type": "code",
+-   "execution_count": null,
+-   "id": "c548b479-0b50-4f3b-b282-e9bec87e2785",
+-   "metadata": {},
+-   "outputs": [],
+-   "source": []
+-  }
+- ],
+- "metadata": {
+-  "kernelspec": {
+-   "display_name": "Python 3 (ipykernel)",
+-   "language": "python",
+-   "name": "python3"
+-  },
+-  "language_info": {
+-   "codemirror_mode": {
+-    "name": "ipython",
+-    "version": 3
+-   },
+-   "file_extension": ".py",
+-   "mimetype": "text/x-python",
+-   "name": "python",
+-   "nbconvert_exporter": "python",
+-   "pygments_lexer": "ipython3",
+-   "version": "3.8.10"
+-  },
+-  "toc-autonumbering": true,
+-  "toc-showcode": true
+- },
+- "nbformat": 4,
+- "nbformat_minor": 5
+-}
+Index: doc/pycharm_error.md
+===================================================================
+diff --git a/doc/pycharm_error.md b/doc/pycharm_error.md
+deleted file mode 100644
+--- a/doc/pycharm_error.md	(revision 3fd4ecf32c0829fe489dec59eb20c857f1871b31)
++++ /dev/null	(revision 3fd4ecf32c0829fe489dec59eb20c857f1871b31)
+@@ -1,9 +0,0 @@
+-ERROR: Command errored out with exit status 1: python setup.py egg_info Check the logs for full command output.
+-+ solution
+-> sudo pip3 install --upgrade pip setuptools wheel
+-
+-ERROR: 导入的包不能调试
+-+ solution
+-  > pip uninstall pydantic  
+-  > export SKIP_CYTHON=1   
+-  > pip install --no-cache-dir --no-binary :all: pydantic  
+\ No newline at end of file
+Index: test.py
+===================================================================
+diff --git a/test.py b/test.py
+deleted file mode 100644
+--- a/test.py	(revision 3fd4ecf32c0829fe489dec59eb20c857f1871b31)
++++ /dev/null	(revision 3fd4ecf32c0829fe489dec59eb20c857f1871b31)
+@@ -1,193 +0,0 @@
+-#!/usr/bin/env python3
+-# -*- coding: utf-8 -*-
+-# @Time    : 2021/9/3 18:16
+-# @Author  : hzy
+-# @File    : test.py
+-# @Software: PyCharm
+-
+-from collections import deque
+-from select import select
+-
+-
+-# This class represents a generic yield event in the scheduler
+-class YieldEvent:
+-    def handle_yield(self, sched, task):
+-        pass
+-
+-    def handle_resume(self, sched, task):
+-        pass
+-
+-
+-# Task Scheduler
+-class Scheduler:
+-    def __init__(self):
+-        self._numtasks = 0  # Total num of tasks
+-        self._ready = deque()  # Tasks ready to run
+-        self._read_waiting = {}  # Tasks waiting to read
+-        self._write_waiting = {}  # Tasks waiting to write
+-
+-    # Poll for I/O events and restart waiting tasks
+-    def _iopoll(self):
+-        rset, wset, eset = select(self._read_waiting,
+-                                  self._write_waiting, [])
+-        for r in rset:
+-            evt, task = self._read_waiting.pop(r)
+-            evt.handle_resume(self, task)
+-        for w in wset:
+-            evt, task = self._write_waiting.pop(w)
+-            evt.handle_resume(self, task)
+-
+-    def new(self, task):
+-        '''
+-        Add a newly started task to the scheduler
+-        '''
+-        self._ready.append((task, None))
+-        self._numtasks += 1
+-
+-    def add_ready(self, task, msg=None):
+-        '''
+-        Append an already started task to the ready queue.
+-        msg is what to send into the task when it resumes.
+-        '''
+-        self._ready.append((task, msg))
+-
+-    # Add a task to the reading set
+-    def _read_wait(self, fileno, evt, task):
+-        self._read_waiting[fileno] = (evt, task)
+-
+-    # Add a task to the write set
+-    def _write_wait(self, fileno, evt, task):
+-        self._write_waiting[fileno] = (evt, task)
+-
+-    def run(self):
+-        '''
+-        Run the task scheduler until there are no tasks
+-        '''
+-        while self._numtasks:
+-            if not self._ready:
+-                self._iopoll()
+-            task, msg = self._ready.popleft()
+-            try:
+-                # Run the coroutine to the next yield
+-                r = task.send(msg)
+-                if isinstance(r, YieldEvent):
+-                    r.handle_yield(self, task)
+-                else:
+-                    raise RuntimeError('unrecognized yield event')
+-            except StopIteration:
+-                self._numtasks -= 1
+-
+-
+-# Example implementation of coroutine-based socket I/O
+-class ReadSocket(YieldEvent):
+-    def __init__(self, sock, nbytes):
+-        self.sock = sock
+-        self.nbytes = nbytes
+-
+-    def handle_yield(self, sched, task):
+-        sched._read_wait(self.sock.fileno(), self, task)
+-
+-    def handle_resume(self, sched, task):
+-        data = self.sock.recv(self.nbytes)
+-        sched.add_ready(task, data)
+-
+-
+-class WriteSocket(YieldEvent):
+-    def __init__(self, sock, data):
+-        self.sock = sock
+-        self.data = data
+-
+-    def handle_yield(self, sched, task):
+-        sched._write_wait(self.sock.fileno(), self, task)
+-
+-    def handle_resume(self, sched, task):
+-        nsent = self.sock.send(self.data)
+-        sched.add_ready(task, nsent)
+-
+-
+-class AcceptSocket(YieldEvent):
+-    def __init__(self, sock):
+-        self.sock = sock
+-
+-    def handle_yield(self, sched, task):
+-        sched._read_wait(self.sock.fileno(), self, task)
+-
+-    def handle_resume(self, sched, task):
+-        r = self.sock.accept()
+-        sched.add_ready(task, r)
+-
+-
+-# Wrapper around a socket object for use with yield
+-class Socket(object):
+-    def __init__(self, sock):
+-        self._sock = sock
+-
+-    def recv(self, max_bytes):
+-        return ReadSocket(self._sock, max_bytes)
+-
+-    def send(self, data):
+-        return WriteSocket(self._sock, data)
+-
+-    def accept(self):
+-        return AcceptSocket(self._sock)
+-
+-    def __getattr__(self, name):
+-        return getattr(self._sock, name)
+-
+-
+-def main():
+-    from socket import socket, AF_INET, SOCK_STREAM
+-    import time
+-
+-    # Example of a function involving generators.  This should
+-    # be called using line = yield from readline(sock)
+-    def readline(sock):
+-        chars = []
+-        while True:
+-            c = yield sock.recv(1)
+-            if not c:
+-                break
+-            chars.append(c)
+-            if c == b'\n':
+-                break
+-        return b''.join(chars)
+-
+-    # Echo server using generators
+-    class EchoServer:
+-        def __init__(self, addr, sched):
+-            self.sched = sched
+-            sched.new(self.server_loop(addr))
+-
+-        def server_loop(self, addr):
+-            s = Socket(socket(AF_INET, SOCK_STREAM))
+-
+-            s.bind(addr)
+-            s.listen(5)
+-            while True:
+-                c, a = yield s.accept()
+-                print('Got connection from ', a)
+-                self.sched.new(self.client_handler(Socket(c)))
+-
+-        @staticmethod
+-        def client_handler(client):
+-            while True:
+-                line = yield from readline(client)
+-                if not line:
+-                    break
+-                line = b'GOT:' + line
+-                while line:
+-                    nsent = yield client.send(line)
+-                    line = line[nsent:]
+-            client.close()
+-            print('Client closed')
+-
+-    sched = Scheduler()
+-    EchoServer(('', 16000), sched)
+-    sched.run()
+-
+-
+-if __name__ == '__main__':
+-    from multiprocessing import Pool
+-    p = Pool(8)
+-    p.map_async()
+-    from functools import partial
+Index: datebase/redis/redis.md
+===================================================================
+diff --git a/datebase/redis/redis.md b/datebase/redis/redis.md
+deleted file mode 100644
+--- a/datebase/redis/redis.md	(revision 3fd4ecf32c0829fe489dec59eb20c857f1871b31)
++++ /dev/null	(revision 3fd4ecf32c0829fe489dec59eb20c857f1871b31)
+@@ -1,3 +0,0 @@
+-### 连接远程redis服务器
+-+ redis-cli -u redis://:password@host:port/db
+-+ redis-cli -h host -p port -a password
+\ No newline at end of file
+Index: doc/elasticsearch.md
+===================================================================
+diff --git a/doc/elasticsearch.md b/doc/elasticsearch.md
+deleted file mode 100644
+--- a/doc/elasticsearch.md	(revision 3fd4ecf32c0829fe489dec59eb20c857f1871b31)
++++ /dev/null	(revision 3fd4ecf32c0829fe489dec59eb20c857f1871b31)
+@@ -1,5 +0,0 @@
+-# Elasticsearch
+-
+-## 结构
+-
+-
+Index: python/design_patterns/README.MD
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>## DESIGN PATTERNS  设计模式\n\n+ [Factory 工厂模式](./factory.py)
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/python/design_patterns/README.MD b/python/design_patterns/README.MD
+--- a/python/design_patterns/README.MD	(revision 3fd4ecf32c0829fe489dec59eb20c857f1871b31)
++++ b/python/design_patterns/README.MD	(date 1669621173438)
+@@ -1,3 +1,4 @@
+ ## DESIGN PATTERNS  设计模式
+ 
+-+ [Factory 工厂模式](./factory.py)
+\ No newline at end of file
+++ [Factory 工厂模式](./factory.py)
+++ [AbstractFactory 抽象工厂](./abstract_factory.py)
+\ No newline at end of file
+Index: python/EXTENTIONLIBRARY.md
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>## [redis](redis)\n\n+ [连接redis数据库](redis/00_connetc_redis.py)\n\n## [flask](flask)\n+ [笔记](flask/flask.md)\n\n\n\n## [Elasticsearch](elasticsearch)  \n  \n参考文档\n- [getting-started-with-elasticsearch-in-python](https://towardsdatascience.com/getting-started-with-elasticsearch-in-python-c3598e718380)\n- [笔记](../doc/elasticsearch.md)
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/python/EXTENTIONLIBRARY.md b/python/EXTENTIONLIBRARY.md
+--- a/python/EXTENTIONLIBRARY.md	(revision 3fd4ecf32c0829fe489dec59eb20c857f1871b31)
++++ b/python/EXTENTIONLIBRARY.md	(date 1669621330331)
+@@ -11,4 +11,4 @@
+   
+ 参考文档
+ - [getting-started-with-elasticsearch-in-python](https://towardsdatascience.com/getting-started-with-elasticsearch-in-python-c3598e718380)
+-- [笔记](../doc/elasticsearch.md)
+\ No newline at end of file
++- [笔记](../docs/notes/elasticsearch/elasticsearch.md)
+\ No newline at end of file
+Index: python/STANDARDLIBRARY.md
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>## pycharm\n+ [setting](../doc/pycharm_setting.md)  \n+ [error](../doc/pycharm_error.md)\n\n## [os](usage/os)\n\n+ [基本使用](usage/os/00_basic.py)\n\n## OPP\n+ [内置方法](usage/OOP/00_magic.py)\n+ [类内装饰器和__slots__](usage/OOP/01_class_decorator.py)\n+ [metaclass](usage/OOP/02_metaclass.py)\n\n## 函数\n\n+ [内置函数](usage/function)\n> 函数调用时->关键字参数  \n> 创建函数时->默认参数\n\n## 设计模式\n+ [单例模式]()\n+ [访问者模式]()\n\n## 协议\n+ [迭代器](./usage/protocol/iterator.py)\n+ [生成器](usage/protocol/generator.py)\n\n## 内存泄漏\n+ [使用gc、objgraph干掉python内存泄露与循环引用！](https://www.cnblogs.com/xybaby/p/7491656.html#_label_11)
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/python/STANDARDLIBRARY.md b/python/STANDARDLIBRARY.md
+--- a/python/STANDARDLIBRARY.md	(revision 3fd4ecf32c0829fe489dec59eb20c857f1871b31)
++++ b/python/STANDARDLIBRARY.md	(date 1669621330331)
+@@ -1,6 +1,6 @@
+ ## pycharm
+-+ [setting](../doc/pycharm_setting.md)  
+-+ [error](../doc/pycharm_error.md)
+++ [setting](../docs/notes/pycharm/pycharm_setting.md)  
+++ [error](../docs/notes/pycharm/pycharm_error.md)
+ 
+ ## [os](usage/os)
+ 
+Index: python/design_patterns/factory.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>#!/usr/bin/env python3\n# -*- coding: utf-8 -*-\n# @author: hzy\n# @file: factory.py\n# @time: 2021/12/26 15:59\n\n\"\"\"\n定义一个用于创建对象的接口，让子类决定实例化哪一个类。Factory Method使一个类的实例化延迟到其子类。\n\"\"\"\nfrom datetime import datetime\n\n\nclass Factory(object):\n    def parse(self, value):\n        pass\n\n    @classmethod\n    def get_factory(cls):\n        return NumberFactory()\n\n\nclass NumberFactory(Factory):\n\n    def parse(self, value):\n        return int(value)\n\n\n# 静态工厂\nclass LocalDateFactory(object):\n\n    @staticmethod\n    def format_int(value):\n        return datetime.strptime(str(value), '%Y%m%d').date()\n\n\nif __name__ == '__main__':\n    number_factory = Factory.get_factory()\n    result = number_factory.parse('123')\n    LocalDateFactory.format_int(20200202)\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/python/design_patterns/factory.py b/python/design_patterns/factory.py
+--- a/python/design_patterns/factory.py	(revision 3fd4ecf32c0829fe489dec59eb20c857f1871b31)
++++ b/python/design_patterns/factory.py	(date 1669621173438)
+@@ -6,6 +6,9 @@
+ 
+ """
+ 定义一个用于创建对象的接口，让子类决定实例化哪一个类。Factory Method使一个类的实例化延迟到其子类。
++工厂方法是指定义工厂接口和产品接口，但如何创建实际工厂和实际产品被推迟到子类实现，从而使调用方只和抽象工厂与抽象产品打交道。
++实际更常用的是更简单的静态工厂方法，它允许工厂内部对创建产品进行优化。
++调用方尽量持有接口或抽象类，避免持有具体类型的子类，以便工厂方法能随时切换不同的子类返回，却不影响调用方代码。
+ """
+ from datetime import datetime
+ 
+Index: README.md
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>[toc]\n\n## python\n\nlearning python and record with program\n\n[标准库](python/STANDARDLIBRARY.md)\n\n[扩展库](python/EXTENTIONLIBRARY.md)\n\n## Linux\n\n[git](linux/git.md)\n\n## datebase\n\n### mongo\n\n+ [文档](./datebase/mongo/MongoDB权威指南（第2版）.pdf)\n+ [笔记](./datebase/mongo/MongoDB.md)\n+ [pymongo基本使用](python/mongo/01_pymongo.py)\n\n\n\n\n\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/README.md b/README.md
+--- a/README.md	(revision 3fd4ecf32c0829fe489dec59eb20c857f1871b31)
++++ b/README.md	(date 1669621329849)
+@@ -10,14 +10,14 @@
+ 
+ ## Linux
+ 
+-[git](linux/git.md)
++[git](docs/notes/git/git.md)
+ 
+ ## datebase
+ 
+ ### mongo
+ 
+-+ [文档](./datebase/mongo/MongoDB权威指南（第2版）.pdf)
+-+ [笔记](./datebase/mongo/MongoDB.md)
+++ [文档](docs/notes/mongo/MongoDB权威指南（第2版）.pdf)
+++ [笔记](docs/notes/mongo/MongoDB.md)
+ + [pymongo基本使用](python/mongo/01_pymongo.py)
+ 
+ 
+diff --git a/datebase/sql/sqlserver/sqlserver.md b/datebase/sql/sqlserver/sqlserver.md
+deleted file mode 100644
