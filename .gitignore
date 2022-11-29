@@ -187,8 +187,8 @@ out/
 atlassian-ide-plugin.xml
 
 # Cursive Clojure plugin
-/.idea/
-*/.idea
+.idea/
+**/.idea/
 
 # Crashlytics plugin (for Android Studio and IntelliJ)
 com_crashlytics_export_strings.xml
@@ -206,12 +206,14 @@ migrations/
 test/
 test/schema
 *.DS_Store
-*/.DS_Store
+**/*.DS_Store
 
 /privkey.pem
 /server_cert.pem
 
 /scripts/work/
+/scripts/work
 /docs/work/
+/docs/work
 /scripts/.ipynb_checkpoints/
-/scripts/work/.idea/
+
