@@ -6,6 +6,26 @@
 @Author  :   zhenyu.hu
 @Desc    :   <awaiting description>
 """
+import typing as t
+
+
+class ConfigAttribute:
+    """Makes an attribute forward to the config"""
+
+    def __init__(self, name: str, get_converter: t.Optional[t.Callable] = None) -> None:
+        self.__name__ = name
+        self.get_converter = get_converter
+
+    def __get__(self, obj: t.Any, owner: t.Any = None) -> t.Any:
+        if obj is None:
+            return self
+        rv = obj.config[self.__name__]
+        if self.get_converter is not None:
+            rv = self.get_converter(rv)
+        return rv
+
+    def __set__(self, obj: t.Any, value: t.Any) -> None:
+        obj.config[self.__name__] = value
 
 
 class DictAttribute:
