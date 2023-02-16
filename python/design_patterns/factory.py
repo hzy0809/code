@@ -5,6 +5,7 @@
 # @time: 2021/12/26 15:59
 
 """
+https://www.liaoxuefeng.com/wiki/1252599548343744/1281319170474017
 定义一个用于创建对象的接口，让子类决定实例化哪一个类。Factory Method使一个类的实例化延迟到其子类。
 """
 from datetime import datetime
