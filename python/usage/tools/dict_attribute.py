@@ -1,11 +1,10 @@
 #!/usr/bin/env python
 # -*-coding:utf-8 -*-
-"""
-@File    :   dict_attribute.py
-@Time    :   2022/11/30 13:47 
-@Author  :   zhenyu.hu
-@Desc    :   <awaiting description>
-"""
+# @File    :   dict_attribute.py
+# @Time    :   2022/11/30 13:47 
+# @Author  :   zhenyu.hu
+# @Desc    :   <awaiting description>
+
 import typing as t
 
 
@@ -38,63 +37,63 @@ class DictAttribute:
     obj = None
 
     def __init__(self, obj):
-        # type: (Any) -> None
+        # type: (t.Any) -> None
         object.__setattr__(self, 'obj', obj)
 
     def __getattr__(self, key):
-        # type: (Any) -> Any
+        # type: (t.Any) -> t.Any
         return getattr(self.obj, key)
 
     def __setattr__(self, key, value):
-        # type: (Any, Any) -> None
+        # type: (t.Any, t.Any) -> None
         return setattr(self.obj, key, value)
 
     def get(self, key, default=None):
-        # type: (Any, Any) -> Any
+        # type: (t.Any, t.Any) -> t.Any
         try:
             return self[key]
         except KeyError:
             return default
 
     def setdefault(self, key, default=None):
-        # type: (Any, Any) -> None
+        # type: (t.Any, t.Any) -> None
         if key not in self:
             self[key] = default
 
     def __getitem__(self, key):
-        # type: (Any) -> Any
+        # type: (t.Any) -> t.Any
         try:
             return getattr(self.obj, key)
         except AttributeError:
             raise KeyError(key)
 
     def __setitem__(self, key, value):
-        # type: (Any, Any) -> Any
+        # type: (t.Any, t.Any) -> t.Any
         setattr(self.obj, key, value)
 
     def __contains__(self, key):
-        # type: (Any) -> bool
+        # type: (t.Any) -> bool
         return hasattr(self.obj, key)
 
     def _iterate_keys(self):
-        # type: () -> Iterable
+        # type: () -> t.Iterable
         return iter(dir(self.obj))
 
     iterkeys = _iterate_keys
 
     def __iter__(self):
-        # type: () -> Iterable
+        # type: () -> t.Iterable
         return self._iterate_keys()
 
     def _iterate_items(self):
-        # type: () -> Iterable
+        # type: () -> t.Iterable
         for key in self._iterate_keys():
             yield key, getattr(self.obj, key)
 
     iteritems = _iterate_items
 
     def _iterate_values(self):
-        # type: () -> Iterable
+        # type: () -> t.Iterable
         for key in self._iterate_keys():
             yield getattr(self.obj, key)
 

@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # @Time    : 2022/1/26 14:02
-# @File    : dir.py.py
+# @File    : structure.py
 # @Software: PyCharm
 """
-生成README.md
+生成下项目目录脚本
 """
 import importlib
 from pathlib import Path
@@ -86,7 +86,7 @@ class DisplayablePath(object):
         suffix = ''
         if self.path.is_dir():
             suffix = '/'
-        body = self.path.name or self.path.absolute().stem
+        body = self.display_doc or self.path.name or self.path.absolute().stem
         if self.md:
             body = f'[{body}]({self.path.as_posix()})'
         return body + suffix
@@ -98,14 +98,13 @@ class DisplayablePath(object):
             return text
         if self.path.name.endswith('.py'):
             p = self.path.absolute().relative_to(Path('.').absolute())
-            module = str(p).replace('.py', '').replace('/', '.')
+            module = str(p).replace('.py', '').replace('\\', '.')
             try:
                 doc = importlib.import_module(module).__doc__
                 if doc:
-                    print(doc)
-                    text = '# {!s}'.format(doc.strip().replace('\n', '  '))
+                    text = '{!s}'.format(doc.strip().split("\n")[0])
             except Exception as e:
-                print(e)
+                print(module, e)
         return text
 
     def displayable(self):
@@ -116,10 +115,9 @@ class DisplayablePath(object):
                             if self.is_last
                             else self.display_filename_prefix_middle)
 
-        parts = ['{!s} {:<70s} {:<50s}  \n'.format(
+        parts = ['{!s} {:<70s}  \n'.format(
             _filename_prefix,
             self.display_name,
-            self.display_doc
         )]
 
         parent = self.parent
@@ -134,7 +132,7 @@ class DisplayablePath(object):
 
 if __name__ == '__main__':
     from const import ProjectPath
-    os.chdir(ProjectPath.joinpath(python))
+    os.chdir(ProjectPath)
     paths = DisplayablePath.make_tree(Path('.'), criteria=display_criteria, md=True)
     with open(ProjectPath.joinpath('README.md'), 'w', encoding="utf8") as f:
         f.write(default_head)
