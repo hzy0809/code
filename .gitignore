@@ -211,9 +211,8 @@ test/schema
 /privkey.pem
 /server_cert.pem
 
-/scripts/work/
 /scripts/work
-/docs/work/
 /docs/work
-/scripts/.ipynb_checkpoints/
+/scripts/.ipynb_checkpoints
 
+/scripts/config/lab
