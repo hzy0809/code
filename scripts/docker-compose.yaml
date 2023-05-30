@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  lab:
+    image: lab:latest
+    build:
+      context: .
+    ports:
+      - "18888:8888"
+    volumes:
+      - .:/code
+      - /etc/localtime:/etc/localtime:ro
+      - ./config:/root/.jupyter
+      - ./.site-packages:/opt/conda/lib/python3.10/site-packages
+      - ./.venv:/opt/conda/envs
+      - ./.local:/root/.local
+    command: /bin/bash jupyter.sh
+    env_file:
+      - ./.env

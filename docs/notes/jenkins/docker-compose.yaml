@@ -1,0 +1,35 @@
+version: "3.7"
+
+services:
+  jenkins-docker:
+    image: docker:dind
+    hostname: dockeru
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ../../work/jenkins/jenkins-data:/var/jenkins_home
+      - ../../work/jenkins/jenkins-docker-certs:/certs/client
+    privileged: true
+    environment:
+      - DOCKER_TLS_CERTDIR=/certs
+    expose:
+      - 2376
+
+  jenkins-blueocean:
+    image: jenkins-blueocean:2.387.2
+    build:
+      context: .
+    restart: on-failure
+    environment:
+      - DOCKER_HOST=tcp://docker:2376
+      - DOCKER_CERT_PATH=/certs/client
+      - DOCKER_TLS_VERIFY=1
+    ports:
+      - 8080:8080
+      - 50000:50000
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ../../work/jenkins/jenkins-data:/var/jenkins_home
+      - ../../work/jenkins/jenkins-docker-certs:/certs/client
+    depends_on:
+      - jenkins-docker
+

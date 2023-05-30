@@ -1,2 +1,2 @@
 #! /bin/bash
-nohup jupyter lab --allow-root --notebook-dir='.'> jupyterlab.log 2>&1 &
+jupyter lab --allow-root --no-browser --ip='*' --notebook-dir='./work'

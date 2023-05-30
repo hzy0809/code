@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  pypi:
+    image: pypiserver/pypiserver:latest
+    ports:
+      - "8080:8080"
+    volumes:
+      - /etcl/localtime:/etc/localtime:ro
+      - ./data/packages:/data/packages
+      - ./auth:/auth
+    command:
+      - -P
+      - /auth/.htpasswd
